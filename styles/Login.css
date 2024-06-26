@@ -1,0 +1,66 @@
+.main-login-container{
+    margin: 40px auto;
+    min-width: 80%;
+    min-height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+    border-radius: 20px;
+}
+
+.login-input-container{
+    text-align: center;
+    margin: auto;
+    padding: 40px;
+    flex: 50%;
+}
+
+.login-input-container button{
+    margin: 20px;
+    color: white;
+    background-color: rgb(28, 111, 93);
+}
+
+.login-input-container button:hover{
+    color: white;
+    background-color: rgb(10, 96, 77);
+}
+
+.button-container a{
+    color: white;
+    text-decoration: none;
+}
+
+.login-image-container{
+    flex: 50%;
+    margin: auto;
+    text-align: center;
+}
+
+.login-image-container img{
+    border-radius: 20px !important;
+    margin: 20px;
+    height: 350px;
+    width: 450px;
+}
+
+.input-container{
+    margin: auto;
+    width: 80%;
+}
+
+/* .forgot-pwd{
+    margin-right: 50px !important;
+    margin-left: auto;
+    color: rgb(54, 54, 247) !important;
+    text-decoration: underline;
+    font-size: 17px !important;
+} */
+
+i{
+    padding-bottom: 15px;
+}
+
+#register_text{
+    color: rgb(54, 54, 247) !important;
+}

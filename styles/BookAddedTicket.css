@@ -1,0 +1,86 @@
+.main-booking-container{
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+.seat{
+    font-weight: 500;
+    margin: 0px !important;
+}
+
+.passenger-info, .schedule-info, .passenger-info-header{
+    margin: 20px;
+}
+
+.cost-info-header{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.cost-info-container, .final-fare-row{
+    margin-top: 20px;
+}
+
+.passenger-form-row{
+    padding: 20px;
+}
+
+.age{
+    width: 100px !important;
+}
+
+.schedule-info-header{
+    margin: 20px !important;
+}
+
+.amount{
+    margin-top: 20px;
+}
+
+hr{
+    margin: 0px !important;
+}
+
+input{
+    width: 100% !important;
+}
+
+.single-passenger-row{
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+.remove-button{
+    margin-top: 35px;
+}
+
+.remove-button i {
+    font-size: 15px !important;
+}
+
+@media(max-width: 1000px){
+    .main-booking-container{
+        grid-template-columns: 100%;
+        margin: auto;
+        margin-top: 30px;
+        margin-bottom: 40px;
+        width: 90%;
+    }
+
+    .cost-info-container{
+        margin-top: 30px;
+    }
+}
+
+@media(max-width: 800px){
+    .single-passenger-row{
+        display: flex;
+    }
+    .single-passenger-row .col{
+        flex: 100%;
+        width: 100% !important;
+    }
+    .gender-input{
+        width: 200px !important;
+    }
+}

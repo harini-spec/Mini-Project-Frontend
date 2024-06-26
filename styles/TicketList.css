@@ -1,0 +1,85 @@
+.col2{
+    text-align: center;
+}
+
+.col3{
+    text-align: right !important;
+}
+
+.main-ticketlist-container{
+    width: 80%;
+    margin: auto;
+}
+
+.sort-filter-container{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: 20px;
+}
+
+.ticket-card{
+    margin: 10px;
+}
+
+.booked, .not-booked, .cancelled{
+    padding: 7px 0px;
+    border-radius: 10px;
+    width: 120px;
+    text-align: center;
+    color: white;
+    font-size: 17px;
+}
+
+.booked{
+    background-color: rgb(28,111,93);
+    color: white;
+}
+
+.not-booked{
+    background-color: rgb(213, 213, 1);
+    color: white;
+}
+
+.cancelled{
+    background-color: rgb(255, 0, 0);
+    color: white;
+}
+
+.ticket-button{
+    margin-top: 5px;
+}
+
+.status_row{
+    margin-top: 20px !important;
+}
+
+.error-container{
+    margin: 40px 20px;
+}
+
+select{
+    border: 2px solid rgb(210,210,210);
+    border-radius: 5px;
+}
+
+@media(max-width: 800px){
+    .sort-filter-container{
+        grid-template-columns: 100%;
+    }
+
+    .col3{
+        margin-top:10px;
+        text-align: left !important;
+    }
+
+    .status_row{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .main-ticketlist-container{
+        width: 100%;
+    }
+}

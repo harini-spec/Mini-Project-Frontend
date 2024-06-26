@@ -1,0 +1,45 @@
+Frontend for backend API:
+    Responsive
+    SCSS comments if used any 
+    Proper folder structure
+
+Expectations:
+    No console msgs
+    Check authentication
+    Error page - diff route
+    Clean code - 15 lines of executable code per function
+    Menus 
+    Layouts
+    My booked order - sorted order
+    User already logged - don't show register or log in, only logout
+    Responsive pages
+
+
+Notes: 
+    Note:
+        Before every page, check if its restricted - check if logged in and authorized, token expired or not
+
+    Target:
+        Admin page 
+            - bus, route - input pages, display pgs
+
+    Pages:
+        Admin page:
+            - Update status to ride over - Add ride over status to ticketslist
+            - Display all driver, route, bus 
+
+        Feedback Page 
+
+        Book Added ticket Page: 
+            - Edit passenger info
+
+        Admin - can register driver 
+
+        User page - Reward points display, soft delete, activate account
+        Driver Page - all - change pwd, see schedules 
+        Forgot Password Page 
+
+        Add schedule enhancements:
+            Display all driver 
+            Add schedule from driver's page - can take driver id from there
+            input - source and dest - change to route id 

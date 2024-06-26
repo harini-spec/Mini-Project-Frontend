@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Start of Meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- End of Meta tags -->
+
+    <title>admin Login</title>
+
+    <!-- Start of Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="./Media/Images/favicon-32x32.png">
+    <link href="./styles/Login.css" rel="stylesheet">
+    <link href="./styles/ErrorStyles.css" rel="stylesheet">
+    <!-- End of Styles -->
+
+    <!-- Start of Scripts -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="./scripts/LoginScript.js"></script>
+    <script src="./scripts/AdminAuthScript.js"></script>
+    <script>
+
+        $(document).ready(function(){
+          $('#nav-placeholder').load('NavBar.html', function() {
+            setNavDetailsForAdmin(); 
+          $("#footer-placeholder").load("Footer.html");
+          });
+        });
+        
+    </script>
+    <!-- End of Scripts -->
+
+</head>
+<body>
+  <nav id="nav-placeholder"></nav>
+
+    <div class="main-login-container">
+        <div class="login-image-container">
+            <img src = "./Media/Images/login-image.gif">
+        </div>
+        <div class="login-input-container">
+          <h1 style="text-align: center; padding: 20px; margin-bottom: 30px;">Sign In</h1>
+
+            <form method="post" onsubmit="return false;">
+                <div class="d-flex flex-row align-items-center mb-4 input-container">
+                  <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                  <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                    <input type="email" id="email" class="form-control" placeholder="Email" onblur="validateEmail()" />
+                    <p id="emailError" class="error_msg"></p>
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-4 input-container">
+                  <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                  <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                    <input type="password" id="password" class="form-control" placeholder="Password" onblur="validatePassword()" />
+                    <p id="passwordError" class="error_msg"></p>
+                  </div>
+                </div>
+
+                <!-- <div class="form-check d-flex justify-content-center mb-5 forgot-pwd-container">
+                    <a href="#!" class="forgot-pwd"> Forgot Password? </a>
+                  </label>
+                </div> -->
+
+                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4 button-container">
+                  <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-lg" onclick="return LoginAdmin()">Login</button>
+                </div>
+
+                <div>
+                  <p id="loginSuccess" class="success_msg"></p>
+                  <p id="loginError" class="error_msg"></p>
+                </div>
+
+                <div>
+                  <p class="text-center">Don't have an account? <a href="AdminRegister.html" id="register_text">Register</a></p>
+                </div>
+
+              </form>
+        </div>
+    </div>
+</body>
+</html>

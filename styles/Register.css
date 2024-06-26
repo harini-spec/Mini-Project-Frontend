@@ -1,0 +1,59 @@
+.main-register-container{
+    margin: 40px auto;
+    min-width: 80%;
+    min-height: 80%;
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+}
+
+.register-input-container{
+    padding: 40px;
+    flex: 50%;
+}
+
+.register-input-container button{
+    margin: 20px;
+    background-color: rgb(28, 111, 93);
+}
+
+.register-input-container button:hover{
+    background-color: rgb(10, 96, 77);
+}
+
+.button-container button, .button-container button:hover{
+    color: white;
+}
+
+.button-container{
+    margin-bottom: 0 !important;
+}
+
+.button-container a{
+    color: white;
+    text-decoration: none;
+}
+
+.register-image-container{
+    flex: 50%;
+    margin: auto;
+    text-align: center;
+}
+
+.register-image-container img{
+    height: 400px;
+    width: 400px;
+}
+
+i{
+    margin-bottom: 10px;
+}
+
+.PasswordError-icon-pos-formatError{
+    padding-bottom: 100px;
+}
+
+#terms_text{
+    color: rgb(54, 54, 247) !important;
+}

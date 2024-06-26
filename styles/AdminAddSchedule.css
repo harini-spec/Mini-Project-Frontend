@@ -1,0 +1,22 @@
+.add-schedule{
+    background-color: rgb(28,111,93) !important;
+    color: white !important;
+    margin-bottom: 10px;
+}
+
+.add-schedule-container{
+    width: 55% !important;
+    margin: auto;
+    margin: 40px auto;
+    border: 1px solid rgb(222,226,230);
+    padding: 20px;
+}
+
+.add-schedule-header{
+    text-align: center;
+}
+
+.button-container{
+    margin-top: 20px;
+    text-align: center;
+}

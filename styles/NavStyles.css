@@ -1,0 +1,34 @@
+a, body{
+    font-size: 20px !important;
+}
+
+.navbar-custom{
+    padding: 2% 5% !important;
+    background-color: rgb(28, 111, 93) !important;
+}
+
+li{
+    padding: 0 15px;
+}
+
+a{
+    padding: 0 15px;
+    color: white !important;
+}
+
+.dropdown-menu{
+    background-color: rgb(28, 111, 93) !important;
+    border: 1px solid rgb(10, 96, 77)
+}
+
+.dropdown-menu a:hover{
+    background-color: rgb(10, 96, 77) !important;
+}
+
+.navbar-toggler-icon{
+    color: white !important;
+}
+
+.left-icon{
+    margin-right: 5px;
+}

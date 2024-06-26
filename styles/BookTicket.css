@@ -1,0 +1,143 @@
+.Ticket-Container{
+    display: grid;
+    grid-template-columns: 70% 30%;
+    padding: 0 5%;
+    margin-top: 20px;
+    margin-bottom: 30px; 
+}
+
+.Schedule-Details{
+    margin-bottom: 10px;
+}
+
+.col2{
+    text-align: center;
+}
+
+.col3{
+    text-align: right;
+}
+
+.Booking-header{
+    padding: 30px 5%;
+    color: white;
+    background-color: rgb(28,111,93);
+    border-top: 1px solid black;
+}
+
+.seat{
+    margin: 30px 0;
+}
+
+label{
+    font-size: 15px;
+    font-weight: 500;
+    margin: 7px 0;
+}
+
+.gender-input{
+    display:flex;
+    border: 1px solid rgb(222,226,230);
+    border-radius: 7px;
+}
+
+.gender-input * {
+    display: flex;
+    padding: 5px 10px;
+    font-size: 18px;
+    text-align: center;
+}
+
+#Male{
+    border-right: 1px solid rgb(222,226,230);
+}
+
+#Female:hover, #Male:hover{
+    cursor: pointer;
+}
+
+.selected{
+    background-color: rgb(28,111,93);
+    color: white;
+}
+
+h5{
+    font-weight: 700 !important;
+}
+
+.passenger-form-container .row{
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+b{
+    font-weight: 600 !important;
+}
+
+@media(max-width: 1000px){
+    .Ticket-Container{
+        grid-template-columns: 100%;
+        margin: auto;
+        margin-top: 30px;
+        margin-bottom: 40px;
+    }
+
+    .Cost-Details{
+        margin-top: 30px;
+    }
+}
+
+.error_msg {
+    font-size: 15px;
+}
+
+.continue-button{
+    text-align: right;
+}
+
+.Cost-Details{
+    margin-left: 20px;
+    margin-right: 5%;
+}
+
+.Cost-Details row{
+    display: flex;
+}
+
+.AmtDesc-col{
+    flex: 70% !important;
+}
+
+.amount-col{
+    flex: 30% !important;
+    font-weight: 500;
+}
+
+.discount{
+    color: green;
+}
+
+.amount{
+    font-size: 1rem;
+}
+
+#hide{
+    display:none;
+}
+
+#bookTicket_gpay, #bookTicket_paytm{
+    width: 100%;
+}
+
+@media(max-width: 800px){
+    .passenger-form-row{
+        display: flex;
+    }
+    .passenger-form-row .col{
+        flex: 100%;
+        width: 100% !important;
+    }
+    .gender-input{
+        width: 200px !important;
+    }
+}

@@ -1,0 +1,37 @@
+.col{
+    text-align: center;
+}
+
+.passenger-form-row *{
+    font-size: 1.5rem !important;
+}
+
+.cancel-ticket-container{
+    margin: auto !important;
+    margin-top: 50px !important;
+    padding-bottom: 40px !important;
+    width: 50% !important;
+    border: 1px solid rgb(210,210,210);
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+@media(max-width: 1000px){
+    .cancel-ticket-container{
+        width: 70% !important;
+    }
+}
+
+@media(max-width: 500px){
+    .cancel-ticket-container{
+        width: 90% !important;
+    }
+}
+
+.age{
+    width: 100% !important;
+}
+
+.gender-input{
+    margin: auto !important;
+}

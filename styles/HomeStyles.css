@@ -1,0 +1,140 @@
+.main-container{
+    height: 600px;
+}
+
+h1{
+    flex: 100%;
+}
+
+.carousel-container{
+    position: relative;
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px !important;
+}
+
+h3{
+    padding-bottom: 20px;
+}
+
+.card img{
+    padding-top: 10px;
+    left: 50%;
+    height: 100px;
+    width: 100px;
+}
+
+.card1{
+    background-color: rgb(252,237,203) !important;
+}
+.card2{
+    background-color: rgb(203,221,247) !important;
+}
+.card3{
+    background-color: rgb(219,241,227) !important;
+}
+.card4{
+    background-color: rgb(255, 218, 228) !important;
+}
+.card5{
+    background-color: rgb(251, 227, 227) !important;
+}
+
+.carousel-container .card{
+    text-align: center;
+}
+
+.card{
+    border-radius: 10px !important;
+    margin: 20px;
+}
+
+.qns{
+    text-align: left !important;
+    text-decoration: none !important;
+    color: black !important;
+    font-size: 1em !important;
+}
+
+.accordion .card, .card-header{
+    background-color: white !important;
+    border-radius: 10px !important;
+    border: 0px !important;
+    background-color: rgb(248,249,250) !important;
+}
+
+.faq-card{
+    margin-top: 20px;
+    margin-right: 0 !important;
+    background-color: rgb(248,249,250) !important;
+}
+
+.faq-body{
+    padding-left: 10px;
+}
+
+.faq-container{
+    margin-top: 30px;
+    padding: 20px;
+}
+
+#footer-placeholder{
+    margin-top: 100px;
+}
+
+.bg-img{
+    height: 600px !important;
+    filter: brightness(40%);
+}
+
+.tagline{
+    color: white;
+    font-weight: 700;
+    padding-top: 40px;
+    text-align: center;
+}
+
+.welcome{
+    color: white;
+    font-size: 50px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.text-container{
+    width: 60%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, -250%);
+    /* top: 50%; */
+}
+
+@media(max-width: 1000px){
+    .carousel-container .card-group {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .carousel-container .card {
+        width: 100%;
+        margin: 20px 0;
+    }
+}
+
+@media (max-width: 1400px) {
+    .text-container {
+        transform: translate(-50%, -200%);
+    }
+}
+
+@media (max-width: 900px) {
+    .text-container {
+        transform: translate(-50%, -170%);
+    }
+}
+
+@media (max-width: 320px) {
+    .text-container {
+        transform: translate(-50%, -150%);
+    }
+}

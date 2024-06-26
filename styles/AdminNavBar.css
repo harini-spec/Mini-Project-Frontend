@@ -1,0 +1,20 @@
+.nav-admin-container{
+    background-color: white !important;
+    color: black !important;
+    text-align: center;
+    overflow: hidden;
+}
+
+.nav-col{
+    padding: 30px 0px !important;
+    border: 1px solid black !important;
+}
+
+.nav-col:hover{
+    background-color: rgb(28,111,93) !important;
+    cursor: pointer;
+}
+
+.nav-admin-link{
+    color: black !important;
+}

@@ -1,0 +1,41 @@
+// Sass file for error styles
+
+// Mixin for general error message
+@mixin general_error_message(){
+    text-align: right;
+    color: red;
+}
+
+@mixin general_success_message(){
+    text-align: right;
+    color: green;
+}
+
+// Mixin for wrong input - Input box highlight
+@mixin wrong_input(){
+    box-shadow: 2px 2px 2px 2px pink;
+}
+
+// Mixin for correct input - Input box highlight
+@mixin correct_input(){
+    box-shadow: 2px 2px 2px 2px green;
+}
+
+// Error message class - uses Mixin general_error_message
+.error_msg{
+    @include general_error_message();
+}
+
+.success_msg{
+    @include general_success_message();
+}
+
+// Correct input class - uses Mixin correct_input
+.success{
+    @include correct_input;
+}
+
+// Wrong input class - uses Mixin wrong_input
+.error{
+    @include wrong_input;
+}

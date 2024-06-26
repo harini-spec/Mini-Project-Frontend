@@ -1,0 +1,244 @@
+.main-container{
+    background-image: url("/Media/Images/bg1.jpg");
+    background-size: 100% 500px;
+}
+
+.input-main-container{
+    width : 100%;
+    height: 250px;
+    display: flex;
+}
+
+input.form-control:-webkit-autofill {
+    background-color: transparent !important;
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #000 !important; 
+}
+
+input{
+    margin-top: 15px !important;
+    height: 50px !important;
+}
+
+.first{
+    margin-left: 100px !important;
+}
+
+.last{
+    margin-right: 100px !important;
+}
+
+.last button{
+    height: 100%;
+    width: 100%;
+    border-radius: 0 !important;
+    background-color: rgb(28, 111, 93);
+    color: white;
+    font-size: 25px !important;
+}
+
+.input-container {
+    margin-top: 75px;
+    flex: 100% !important;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    width: 50% !important;
+    height : 100px;
+}
+
+.icon{
+    flex: 10%;
+}
+
+.input-box {
+    margin-left: 7px;
+    padding-right: 10px;
+    flex: 90%;
+}
+
+.icon-img{
+    width: 60px;
+}
+
+.from-location, .to-location, .date{
+    width: 250px !important;
+    border: none !important;
+    box-shadow: none;
+    font-size: 25px !important;
+}
+
+.search:hover{
+    background-color: rgb(10, 96, 77) !important;
+    color: white !important;
+}
+
+.buslist-heading{
+    margin: 20px 0;
+    font-size: 40px;
+}
+
+.col2{
+    text-align: center;
+}
+
+.col3{
+    text-align: right;
+}
+
+.card{
+    margin-bottom: 20px;
+}
+
+.pagination-container{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.pagination .page-link{
+    color: black !important;
+}
+
+.sort{
+    margin-top: 25px !important;
+}
+
+.sortAsc, .sortDesc{
+    margin-left: 20px;
+    background-color: rgb(28,111,93) !important;
+    color: white !important;
+    margin-bottom: 10px;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.seats-row{
+    width: 50%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.seat, .driver-seat{
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+    min-width: 40px;
+}
+
+.seat:hover{
+    cursor: pointer;
+}
+
+.booked{
+    background-color: red;
+    color: white;
+}
+
+.booked:hover{
+    background-color: red;
+    color: white;
+    cursor: not-allowed;
+}
+
+.selected{
+    background-color: rgb(28,111,93);
+    color: white;
+}
+
+.button-addTicket{
+    margin: 20px 0px !important;
+}
+
+.buslist-row .card-title{
+    margin-bottom: 30px !important;
+}
+
+@media(max-width: 800px){
+    .seats-row{
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .buslist-row{
+        margin: auto;
+    }
+
+    .sort{
+        margin-top: 0 !important;
+        text-align: left;
+    }
+
+    .header-row{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+}
+
+@media(max-width: 1300px){
+    
+    .main-container{
+        height: 500px !important;
+    }
+
+    .input-main-container{
+        height: 500px !important;
+        display: flex;
+        flex-wrap: wrap;
+        margin: auto;
+        width: 50%;
+    }
+
+    .input-container{
+        height: 90px;
+        margin-top: 10px;
+        flex-direction: row;
+    }
+
+    input{
+        margin-top: 0 !important;
+        margin-top: 0 !important;
+        height: 40px !important;
+    }
+    
+    .first{
+        margin-left: 0 !important;
+    }
+    
+    .last{
+        margin-right: 0 !important;
+    }
+
+    .icon-img{
+        height: 50px !important;
+        width: 50px !important;
+    }
+}
+
+@media(max-width: 700px){
+    .input-main-container{
+        width: 80% !important;
+        margin: auto;
+    }
+}
+
+@media(max-width: 450px){
+
+    body{
+        margin: auto !important;
+    }
+
+    .input-box input{
+        width: 200px !important;
+    }
+
+    .input-container{
+        margin: 20px !important;
+    }
+}
