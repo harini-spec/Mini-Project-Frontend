@@ -16,30 +16,28 @@ Expectations:
 
 
 Notes: 
-    Note:
-        Before every page, check if its restricted - check if logged in and authorized, token expired or not
-
     Target:
         Admin page 
-            - bus, route - input pages, display pgs
+            - bus - input pages, display pgs
 
     Pages:
         Admin page:
             - Update status to ride over - Add ride over status to ticketslist
-            - Display all driver, route, bus 
+            - Display all driver
+            - can register driver 
 
         Feedback Page 
-
-        Book Added ticket Page: 
-            - Edit passenger info
-
-        Admin - can register driver 
 
         User page - Reward points display, soft delete, activate account
         Driver Page - all - change pwd, see schedules 
         Forgot Password Page 
 
-        Add schedule enhancements:
-            Display all driver 
-            Add schedule from driver's page - can take driver id from there
-            input - source and dest - change to route id 
+        Enhancements:
+            Book Added ticket Page: 
+                - Edit passenger info
+            Add schedule:
+                Display all driver 
+                Add schedule from driver's page - can take driver id from there
+                input - source and dest - change to route id 
+            Add Route: 
+                While adding route for point to point, don't ask for stops - deal with it 

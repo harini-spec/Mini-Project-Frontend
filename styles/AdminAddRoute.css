@@ -1,0 +1,95 @@
+.search-container{
+    padding: 20px;
+}
+
+.search-container input{
+    margin-top: 10px;
+    width: 100%;
+}
+
+.search-container button{
+    margin-top: 10px;
+}
+
+.card-header{
+    background-color: rgb(29, 128, 107) !important;
+    color: white !important;
+}
+
+.col2{
+    text-align: center;
+}
+
+.col3{
+    text-align: right;
+}
+
+.route-card-body{
+    margin: 0px 20px;
+}
+
+.route-header{
+    margin: 20px;
+}
+
+.route-card{
+    margin: 40px;
+}
+
+hr{
+    margin: 0px !important;
+    margin-bottom: 20px !important;
+}
+
+.route-no-div{
+    display: flex;
+}
+
+.stops-div{
+    font-size: 1.1rem;
+}
+
+@media(max-width: 500px){
+    .route-card{
+        font-size: 1rem;
+        margin: 10px 0px !important;
+    }
+
+    .search-container{
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .search-container *{
+        flex: 100% !important;
+    }
+}
+
+.stop-single-container{
+    margin: 20px 0px;
+}
+
+.add-route-container{
+    margin: 20px auto !important;
+    width: 50%;
+}
+
+.add-route-header{
+    text-align: center;
+}
+
+#add-stop{
+    text-align: right !important;
+}
+
+.button-container{
+    text-align: center;
+}
+
+.add-stop-button-container{
+    text-align: right;
+}
+
+.error_msg{
+    font-size: 15px;
+}

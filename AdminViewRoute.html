@@ -13,14 +13,14 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="32x32" href="./Media/Images/favicon-32x32.png">
     <link href="./styles/ErrorStyles.css" rel="stylesheet">
-    <link href="./styles/AdminAddSchedule.css" rel="stylesheet">
+    <link href="./styles/AdminAddRoute.css" rel="stylesheet">
     <!-- End of Styles -->
 
     <!-- Start of Scripts -->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./scripts/Authorization.js"></script>
-    <script src="./scripts/AdminBusListScript.js"></script>
+    <script src="./scripts/AdminAddRouteScript.js"></script>
     <script>
 
         $(document).ready(function(){
@@ -29,9 +29,11 @@
             setNavDetailsForAdmin(); 
             checkAdminAuthorization();
           $("#admin-nav").load("AdminNavBar.html");
-          $('#add-schedule-container').load('BusList.html', function(){
-            document.getElementById("nav-placeholder").remove();
-          });
+
+            getRouteData().then(data => {
+                displayRouteData(data);
+                });
+
           $("#footer-placeholder").load("Footer.html");
           });
         });
@@ -41,13 +43,36 @@
 
 </head>
 <body>
-    <nav id="nav-container">
-        <nav id="nav-div-placeholder"></nav>
-    </nav>
+        
+    <nav id="nav-div-placeholder"></nav>
+
     <nav id="admin-nav"></nav>
 
-    <div id="add-schedule-container"></div>
+    <div id="view-route-container">
+        <div class="search-container">
+            <div class="row">
+                <div class="col">
+                    <input class="form-control" type="text" id="source" placeholder="Source" onblur="validateSource()">
+                    <p class="error_msg" id="source_error"></p>
+                </div>
+                <div class="col">
+                    <input class="form-control" type="text" id="destination" placeholder="Destination" onblur="validateDestination()">
+                    <p class="error_msg" id="destination_error"></p>
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary" id="search-btn" onclick="searchRoute()">Search</button>
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary" id="add-route-btn" onclick="location.href='AdminAddRoute.html'">+ Add Route</button>
+                </div>
+            </div>
+        </div>
         
+        <div id="route-list">
+        </div>  
+    </div>
+
+    <footer id="footer-placeholder"></footer>
 
 </body>
 </html>

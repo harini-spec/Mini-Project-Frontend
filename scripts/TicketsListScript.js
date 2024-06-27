@@ -1,5 +1,5 @@
 const getTickets = () => {
-    var token = sessionStorage.getItem("token");
+    var token = localStorage.getItem("token");
     return fetch('http://localhost:5251/api/Ticket/GetAllTicketsOfCustomer', {
         method: 'GET',
         headers: {
@@ -109,12 +109,12 @@ const displayStatusAndButton = () => {
 }
 
 const displayBookTicketPage = (ticketId) => {
-    sessionStorage.setItem("ticketId", ticketId);
+    localStorage.setItem("ticketId", ticketId);
     window.location.href = "BookAddedTicket.html";
 }
 
 const displayCancelTicketPage = (ticketId) => {
-    sessionStorage.setItem("ticketId", ticketId);
+    localStorage.setItem("ticketId", ticketId);
     window.location.href = "CancelTicket.html";
 }
 

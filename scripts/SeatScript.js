@@ -1,6 +1,6 @@
 const getSeatsFromSeatIds = () => {
-    var token = sessionStorage.getItem('token');
-    var selectedSeats = sessionStorage.getItem('selectedSeats');
+    var token = localStorage.getItem('token');
+    var selectedSeats = localStorage.getItem('selectedSeats');
     var seatIds = selectedSeats.split(',').map(seat => seat.split("\"")[1]);
 
     // Create an array of fetch promises
@@ -26,7 +26,7 @@ const getSeatsFromSeatIds = () => {
 }
 
 const getSeatBySeatId = async(seatId) => {
-    var token = sessionStorage.getItem('token');
+    var token = localStorage.getItem('token');
 
     return fetch('http://localhost:5251/GetSeatsBySeatId?SeatId=' + seatId, {
             method: 'GET',

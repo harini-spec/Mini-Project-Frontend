@@ -73,6 +73,7 @@ const displayPassengerDetails = async (ticket) => {
 
     const passengerDetailsArray = await Promise.all(detailPromises);
     passenger_container.innerHTML = passengerDetailsArray.join('');
+    var ticket_refund = calculateRefund(ticket);
     passenger_container.innerHTML +=                 
                 `<div class="cancel-ticket-container">
                     <div class="row">
@@ -80,7 +81,7 @@ const displayPassengerDetails = async (ticket) => {
                             <p> Cancel Ticket:  </p>
                         </div>
                         <div class="col">
-                            <p> Refund Amount: ₹${ticket.total_Cost/2} </p>
+                            <p> Refund Amount: ₹${ticket_refund} </p>
                         </div>
                         <div class="col">
                             <button class="btn btn-danger" onclick="cancelTicket(${ticket.ticketId})">Cancel Ticket</button>
@@ -90,8 +91,17 @@ const displayPassengerDetails = async (ticket) => {
     return;
 };
 
+const calculateRefund = (ticket) => {
+    var refundAmount = 0;
+    ticket.addedTicketDetailDTOs.forEach(detail => {
+        if(detail.status == "Booked")
+            refundAmount += detail.seatPrice/2;
+    });
+    return refundAmount;
+}
+
 const cancelTicketItem = (ticketId, seatId) => {
-    var token = sessionStorage.getItem('token');
+    var token = localStorage.getItem('token');
     var seats = [];
     seats.push(seatId);
 
@@ -139,7 +149,7 @@ const cancelTicketItem = (ticketId, seatId) => {
 }
 
 const cancelTicket = (ticketId) => {
-    var token = sessionStorage.getItem('token');
+    var token = localStorage.getItem('token');
 
     return fetch('http://localhost:5251/api/Transaction/CancelTicket?TicketId='+ticketId, {
         method: 'POST',

@@ -35,7 +35,7 @@
 
           $('#nav-placeholder').load('NavBar.html', function() {
             setNavDetails();
-            getTicketFromTicketId(sessionStorage.getItem('ticketId')).then(data => {
+            getTicketFromTicketId(localStorage.getItem('ticketId')).then(data => {
                 if(data)
                     {
                         displayTicketDetails(data);

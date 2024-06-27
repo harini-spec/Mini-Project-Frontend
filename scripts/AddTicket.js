@@ -1,6 +1,6 @@
 const setTicketDetailsInPage = () => {
-    var token = sessionStorage.getItem('token');
-    var scheduleId = sessionStorage.getItem('scheduleId');
+    var token = localStorage.getItem('token');
+    var scheduleId = localStorage.getItem('scheduleId');
         fetch('http://localhost:5251/api/Schedule/GetAllSchedules', {
             method: 'GET',
             headers: {
@@ -183,7 +183,7 @@ const validationPassengerForm = () => {
 }
 
 const addTicket = () => {
-    var selectedSeats = sessionStorage.getItem('selectedSeats');
+    var selectedSeats = localStorage.getItem('selectedSeats');
     var seats = selectedSeats.split(',').map(seat => seat.split("\"")[1]);
     var passengers = [];
     document.querySelectorAll('.passenger-form-row').forEach(row => {
@@ -206,8 +206,8 @@ const addTicket = () => {
 }
 
 const addTicketToDb = (passengers) => {
-    var token = sessionStorage.getItem('token');
-    var scheduleId = sessionStorage.getItem('scheduleId');
+    var token = localStorage.getItem('token');
+    var scheduleId = localStorage.getItem('scheduleId');
     var ticket_body = JSON.stringify({
         scheduleId: parseInt(scheduleId),
         ticketDetails: passengers

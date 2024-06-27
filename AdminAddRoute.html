@@ -13,13 +13,14 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="32x32" href="./Media/Images/favicon-32x32.png">
     <link href="./styles/ErrorStyles.css" rel="stylesheet">
+    <link href="./styles/AdminAddRoute.css" rel="stylesheet">
     <!-- End of Styles -->
 
     <!-- Start of Scripts -->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./scripts/AdminAuthScript.js"></script>
     <script src="./scripts/Authorization.js"></script>
+    <script src="./scripts/AdminAddRouteScript.js"></script>
     <script>
 
         $(document).ready(function(){
@@ -40,6 +41,44 @@
   <nav id="nav-placeholder"></nav>
 
   <nav id="admin-nav"></nav>
+
+  <div class="add-route-container">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="add-route-header">Add Route</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                  <div class="route-container">
+
+                    <label for="source">Source</label>
+                    <input class="form-control" type="text" id="source" onblur="validateSource()"/>
+                    <p class="error_msg" id="source_error"></p>
+
+                    <label for="destination">Destination</label>
+                    <input class="form-control" type="text" id="destination" onblur="validateDestination()"/>
+                    <p class="error_msg" id="destination_error"></p>
+                  </div>
+
+                  <div class="stop-container">
+                  </div>
+
+                  <div class="add-stop-button-container">
+                    <button class="btn btn-primary" id="add-stop" onclick="addStopFormContainer()">Add Stop</button>
+                  </div>
+                  
+                    <div class="button-container">
+                        <button class="btn btn-primary" id="add-route" onclick="addRoute()">Add Route</button>
+                        <p class="error_msg" id="add_route_error"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
   <footer id="footer-placeholder"></footer>
 </body>

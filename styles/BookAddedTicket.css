@@ -58,7 +58,7 @@ input{
     font-size: 15px !important;
 }
 
-@media(max-width: 1000px){
+@media(max-width: 800px){
     .main-booking-container{
         grid-template-columns: 100%;
         margin: auto;
@@ -72,7 +72,7 @@ input{
     }
 }
 
-@media(max-width: 800px){
+@media(max-width: 500px){
     .single-passenger-row{
         display: flex;
     }

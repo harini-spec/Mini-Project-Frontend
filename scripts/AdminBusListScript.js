@@ -17,10 +17,10 @@ const getData = () => {
 }
 
 const loadBuses = (data, pgno) => {
-    document.querySelector('.sort').innerHTML = '<button type="button" class="btn sortAsc" onclick="sortAsc()">Asc Departure</button>' +
-    '<button type="button" class="btn sortDesc" onclick="sortDesc()">Desc Departure</button>';
-    document.querySelector('.buslist-heading').innerHTML = '<h1> Bus Schedules </h1>';
-
+    document.querySelector('.sort').innerHTML = `<button type="button" class="btn sortAsc" onclick="sortAsc()">Asc Departure</button>
+    <button type="button" class="btn sortDesc" onclick="sortDesc()">Desc Departure</button>`;
+    document.querySelector('.buslist-heading').innerHTML = `<h1> Bus Schedules </h1>`;
+    document.querySelector('.add_schedule_div').innerHTML = `<button type="button" class="btn add-schedule" onclick="location.href = 'AdminAddSchedule.html'"> + Add Schedule</button>`;
     var buslist_row = document.querySelector(".buslist-row");
     buslist_row.removeAttribute('id');
     buslist_row.setAttribute('id', pgno);
@@ -106,49 +106,18 @@ const displaySeats = (BusNumber, scheduleId) => {
                              '<div class="seats-container grid">' ;
                                 
             upper_seats.forEach(seat => {
-                seats_html += '<div class="seat" onclick="selectSeat(' + scheduleId + ',' + seat.id + ')" id=seat-' + seat.id + '>' + seat.seatNumber + ' | Rs.' + seat.seatPrice + '</div>';
+                seats_html += '<div class="seat" id=seat-' + seat.id + '>' + seat.seatNumber + ' | Rs.' + seat.seatPrice + '</div>';
             });
             seats_html += '</div>' + '<h4>Lower Seats</h4>' + '<div class="seats-container grid">' ;
             lower_seats.forEach(seat => {
-                seats_html += '<div class="seat" onclick="selectSeat(' + scheduleId + ',' + seat.id + ')" id=seat-' + seat.id + '>' + seat.seatNumber + ' | Rs.' + seat.seatPrice + '</div>';
+                seats_html += '<div class="seat" id=seat-' + seat.id + '>' + seat.seatNumber + ' | Rs.' + seat.seatPrice + '</div>';
             });
-            seats_html += '</div>' + '</div>' + 
-            '<div class="row button-addTicket"> <div class="col col3"> <a class="btn btn-primary" href="javascript:bookSeats(' + scheduleId + ')">Book Seats</a> </div> </div> </div>';
+            seats_html += '</div>' + '</div> </div> </div>';
             
             ScheduleCard.innerHTML += seats_html;
 
             showSeatStatus(scheduleId);
         });
-    }
-}
-
-const bookSeats = (scheduleId) => {
-    var selectedSeats = document.getElementById(scheduleId).querySelectorAll('.selected');
-    if(selectedSeats.length == 0){
-        Swal.fire('Please select seats to book.');
-        return;
-    }
-    else{
-        selectedSeats = Array.from(selectedSeats).map(seat => seat.id.split('-')[1]);
-        console.log(selectedSeats);
-        localStorage.setItem('scheduleId', scheduleId);
-        localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats));
-        window.location.href = 'bookTicket.html';
-    }
-}
-
-const selectSeat = (scheduleId, seatId) => {
-    var selectedSeat = document.getElementById(scheduleId);
-    selectedSeat = selectedSeat.querySelector('#seat-' + seatId);
-
-    if(selectedSeat.classList.contains('booked')){
-        return;
-    }
-    else if(selectedSeat.classList.contains('selected')){
-        selectedSeat.classList.remove('selected');
-    }
-    else{
-        selectedSeat.classList.add('selected');
     }
 }
 

@@ -24,10 +24,11 @@
     <script>
 
         $(document).ready(function(){
-            checkAdminAuthorization();
 
           $('#nav-placeholder').load('NavBar.html', function() {
+            checkAdminAuthorization();
             setNavDetailsForAdmin(); 
+            $("#admin-nav").load("AdminNavBar.html");
           $("#footer-placeholder").load("Footer.html");
           });
         });
@@ -39,6 +40,8 @@
 <body>
 
     <nav id="nav-placeholder"></nav>
+
+    <nav id="admin-nav"></nav>
   
     <div class="add-schedule-container">
         <div class="container">

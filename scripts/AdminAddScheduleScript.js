@@ -1,27 +1,3 @@
-const removeBookSeatsButtonAndDisplaySeats = (busnumber, seatId) => {
-    displaySeats(busnumber, seatId);
-    setTimeout(function(){
-        const bookSeatsButton = document.querySelectorAll('.button-addTicket');
-        bookSeatsButton.forEach(button => {
-            button.style.display = 'none';
-        });
-    }, 100);
-}
-
-const HandleBookSeatsButton = () => {
-    const buttons = document.getElementsByClassName('btn-primary');
-    for (let i = 0; i < buttons.length; i++) {
-        var busnumber = buttons[i].href.slice(25, -1).split(',')[0].replace(/'/g, '');
-        var seatId = buttons[i].href.slice(25, -1).split(',')[1];
-        buttons[i].href = "javascript:removeBookSeatsButtonAndDisplaySeats('"+busnumber+"','"+seatId+"')";
-    }
-}
-
-const AddSchdeduleButton = () => {
-    var header = document.querySelector('.header-row');
-    header.querySelector('.col3').innerHTML += `<button type="button" class="btn add-schedule" onclick="location.href = 'AdminAddSchedule.html';"> + Add Schedule</a>`;
-}
-
 const validateBus = () => {
     var busNumber = document.getElementById('bus-list');
     var busNumberError = document.getElementById('bus_error');
@@ -146,7 +122,7 @@ const addSchedule = () => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + sessionStorage.getItem('token')
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
         },
         body: JSON.stringify(schedule)
     }).then(res => {
@@ -177,6 +153,7 @@ const addSchedule = () => {
             return;
         Swal.fire({
             title: "Schedule added successfully",
+            icon: "success",
             confirmButtonText: "OK"
             }).then((result) => {
             if (result.isConfirmed) {

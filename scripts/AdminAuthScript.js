@@ -93,8 +93,8 @@ function LoginAdmin(){
         return res.json();
      })
     .then(data => {
-        sessionStorage.setItem('token', data.token);
-        sessionStorage.setItem('email', txtEmail);
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('email', txtEmail);
         document.getElementById('loginError').innerHTML = "";
         document.getElementById('loginSuccess').innerHTML = "logged in successfully!";
         document.getElementById("account").innerHTML = txtEmail;

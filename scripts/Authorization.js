@@ -1,5 +1,5 @@
 function checkAuthorization() {
-    var token = sessionStorage.getItem('token');
+    var token = localStorage.getItem('token');
     if (token == null) {
         Swal.fire({
             title: "Please login first!",
@@ -33,7 +33,7 @@ function checkAuthorization() {
 }
 
 function checkAdminAuthorization(){
-    var token = sessionStorage.getItem('token');
+    var token = localStorage.getItem('token');
     if (token == null) {
         Swal.fire({
             title: "Please login first!",
@@ -50,6 +50,7 @@ function checkAdminAuthorization(){
         var exp = decoded['exp'] * 1000;
         var expiry_date = new Date(exp);
         var current_date = new Date();
+
         if((role == "Admin") && current_date <= expiry_date){
             return;
         }
@@ -62,6 +63,16 @@ function checkAdminAuthorization(){
                   location.href="AdminLogin.html";
                 }
               });
+        }
+        else{
+          Swal.fire({
+            title: "Unauthorized User. Please login if you are an Admin.",
+            confirmButtonText: "OK"
+            }).then((result) => {
+            if (result.isConfirmed) {
+              location.href="AdminLogin.html";
+            }
+          });
         }
     }
 }

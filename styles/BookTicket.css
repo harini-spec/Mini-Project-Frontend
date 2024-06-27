@@ -129,7 +129,7 @@ b{
     width: 100%;
 }
 
-@media(max-width: 800px){
+@media(max-width: 500px){
     .passenger-form-row{
         display: flex;
     }

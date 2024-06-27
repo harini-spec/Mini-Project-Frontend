@@ -1,5 +1,5 @@
 const bookTicket = (Method) => {
-    var token = sessionStorage.getItem('token');
+    var token = localStorage.getItem('token');
     var ticketId = document.querySelector('.Cost-Details').id;
 
     console.log(ticketId);

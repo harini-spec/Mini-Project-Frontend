@@ -1,5 +1,5 @@
 const getTicketFromTicketId = (ticketId) => {
-    const token = sessionStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
     return fetch('http://localhost:5251/api/Ticket/GetAllTicketsOfCustomer', {
         method: 'GET',

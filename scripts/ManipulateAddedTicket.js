@@ -1,5 +1,5 @@
 const deleteAddedTicket = (ticketId) => {
-    var token = sessionStorage.getItem('token');
+    var token = localStorage.getItem('token');
 
     return fetch('http://localhost:5251/api/Ticket/RemoveTicket?TicketId='+ticketId, {
         method: 'DELETE',
@@ -44,7 +44,7 @@ const deleteAddedTicket = (ticketId) => {
 
 const removeTicketItem = (ticketId, seatId) => {
     
-    var token = sessionStorage.getItem('token');
+    var token = localStorage.getItem('token');
 
     return fetch('http://localhost:5251/api/Ticket/RemoveTicketItem?TicketId='+ticketId+'&SeatId='+seatId, {
         method: 'DELETE',

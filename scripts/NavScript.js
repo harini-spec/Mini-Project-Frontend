@@ -1,14 +1,11 @@
 function setNavDetails(){
-    var profileName = sessionStorage.getItem("email");
+    var profileName = localStorage.getItem("email");
     if(profileName){
         profileName = profileName.split("@")[0];
         document.getElementById("account").innerHTML = profileName;
     }
 
-    var admin_element = document.getElementById("admin");
-    if(admin_element)
-        admin_element.remove();
-    if(sessionStorage.getItem("token")){
+    if(localStorage.getItem("token")){
         var login_element = document.getElementById("login");
         var register_element = document.getElementById("register");
         if(login_element)
@@ -28,7 +25,7 @@ function setNavDetails(){
 
 
 function setNavDetailsForAdmin(){
-        var profileName = sessionStorage.getItem("email");
+        var profileName = localStorage.getItem("email");
         if(profileName){
             profileName = profileName.split("@")[0];
             document.getElementById("account").innerHTML = profileName;
@@ -37,7 +34,7 @@ function setNavDetailsForAdmin(){
         document.getElementById("register").href = "AdminRegister.html";
         document.getElementById("login").href = "AdminLogin.html";
     
-        if(sessionStorage.getItem("token")){
+        if(localStorage.getItem("token")){
             var login_element = document.getElementById("login");
             var register_element = document.getElementById("register");
             var ticket_element = document.getElementById("ticket");
@@ -56,9 +53,6 @@ function setNavDetailsForAdmin(){
             var logout_element = document.getElementById("logout");
             var ticket_element = document.getElementById("ticket");
             var book_element = document.getElementById("bookbuses");
-            var admin_element = document.getElementById("admin");
-            if(admin_element)
-                admin_element.remove();
             if(logout_element)
                 logout_element.remove();
             if(ticket_element)
@@ -70,12 +64,12 @@ function setNavDetailsForAdmin(){
 
 
 document.getElementById("logout").addEventListener("click", function(){
-    if(!sessionStorage.getItem("email") || !sessionStorage.getItem("token")){
+    if(!localStorage.getItem("email") || !localStorage.getItem("token")){
         Swal.fire("You are not logged in!");
         return;
     }
-    sessionStorage.removeItem("email");
-    sessionStorage.removeItem("token");
+    localStorage.removeItem("email");
+    localStorage.removeItem("token");
     Swal.fire({
         title: "You've been successfully logged out!",
         confirmButtonText: "OK"

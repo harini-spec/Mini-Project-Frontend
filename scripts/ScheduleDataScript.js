@@ -1,5 +1,5 @@
 const getScheduleByScheduleId = (scheduleId) => {
-    var token = sessionStorage.getItem('token');
+    var token = localStorage.getItem('token');
     return fetch('http://localhost:5251/api/Schedule/GetAllSchedules', {
         method: 'GET',
         headers: {
