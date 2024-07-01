@@ -1,0 +1,84 @@
+.end-col{
+    text-align: right;
+}
+
+.bus-container{
+    margin: 50px;
+    /* margin: auto; */
+}
+
+.card-header{
+    background-color: rgb(29, 128, 107) !important;
+    color: white !important;
+    margin: 0 !important;
+}
+
+.card-body{
+    margin: 10px !important;
+}
+
+.bus-card{
+    margin: 20px 0px;
+}
+
+.header-container{
+    margin: 0 50px 50px 70px;
+}
+
+#add-bus-btn{
+    margin-right: 50px;
+}
+
+.add-bus-header{
+    text-align: center;
+    margin: 50px;
+}
+
+.add-bus-container{
+    width: 80%;
+    margin: auto;
+}
+
+.button-container{
+    margin: 40px;
+    text-align: center;
+}
+
+.seats-input-container .row{
+    margin: 20px 0px;
+}
+
+.seats-input-container .col1{
+    margin-top: 5px;
+    text-align: center;
+}
+
+@media(max-width: 768px) {
+    .add-bus-container{
+        width: 100%;
+    }
+
+    .seats-input-container .row {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .seats-input-container .col {
+        width: 100%;
+        margin: 5px 0;
+        text-align: left;
+    }
+
+    .header-container .row{
+        text-align: center;
+        display: block;
+    }
+
+    #add-bus-btn{
+        margin-right: 0px;
+    }
+
+    .end-col{
+        text-align: center;
+    }
+}

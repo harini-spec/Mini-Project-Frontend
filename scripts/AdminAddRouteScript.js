@@ -80,7 +80,7 @@ const addStopFormContainer = () => {
     var stops_form_container = document.createElement("div");
     stops_form_container.innerHTML = `<div class="row stop-single-container">
                                         <div class="col-4">
-                                            <input type="number" class="form-control" placeholder="Stop Number" onblur="validateStopNumber()" name="stopNumber">
+                                            <input type="number" class="form-control" placeholder="Stop No." onblur="validateStopNumber()" name="stopNumber">
                                             </div>
                                         <div class="col-4">
                                             <input type="text" class="form-control" placeholder="From" onblur="validateFromLocation()" name="from">

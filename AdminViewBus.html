@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Start of Meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- End of Meta tags -->
+
+    <title>View Bus</title>
+
+    <!-- Start of Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="./Media/Images/favicon-32x32.png">
+    <link href="./styles/ErrorStyles.css" rel="stylesheet">
+    <link href="./styles/AdminAddBus.css" rel="stylesheet">
+    <!-- End of Styles -->
+
+    <!-- Start of Scripts -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./scripts/Authorization.js"></script>
+    <script src="./scripts/AdminAddBusScript.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            checkAdminAuthorization();
+
+          $('#nav-placeholder').load('NavBar.html', function() {
+            setNavDetailsForAdmin(); 
+            getBusData().then(data => {
+                console.log(data);
+                displayBusData(data);
+                });
+          $("#footer-placeholder").load("Footer.html");
+          $("#admin-nav").load("AdminNavBar.html");
+          });
+        });
+        
+    </script>
+    <!-- End of Scripts -->
+
+</head>
+<body>
+  <nav id="nav-placeholder"></nav>
+
+  <nav id="admin-nav"></nav>
+
+  <div class="bus-container">
+    <div class="header-container">
+        <div class="row">
+            <div class="col">
+                <h1>Buses</h1>
+            </div>
+            <div class="col end-col">
+                <button class="btn btn-primary" id="add-bus-btn" onclick="location.href='AdminAddBus.html'">+ Add Bus</button>
+            </div>
+        </div>
+    </div>
+    <div class="bus-list-container">
+
+    </div>
+  </div>
+
+  <footer id="footer-placeholder"></footer>
+</body>
+</html>

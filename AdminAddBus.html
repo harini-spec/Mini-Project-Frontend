@@ -12,16 +12,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="32x32" href="./Media/Images/favicon-32x32.png">
-    <link href="./styles/Login.css" rel="stylesheet">
     <link href="./styles/ErrorStyles.css" rel="stylesheet">
+    <link href="./styles/AdminAddBus.css" rel="stylesheet">
     <!-- End of Styles -->
 
     <!-- Start of Scripts -->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./scripts/LoginScript.js"></script>
-    <script src="./scripts/AdminAuthScript.js"></script>
     <script src="./scripts/Authorization.js"></script>
+    <script src="./scripts/AdminAddBusScript.js"></script>
     <script>
 
         $(document).ready(function(){
@@ -42,6 +41,38 @@
   <nav id="nav-placeholder"></nav>
 
   <nav id="admin-nav"></nav>
+
+  <div class="add-bus-container">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="add-bus-header">Add Bus</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="busNumber">Bus Number</label>
+                    <input class="form-control" type="text" id="busNumber" onblur="validateBus()"/>
+                    <p class="error_msg" id="bus_error"></p>
+
+                    <label for="seatsCount">Seats Count</label>
+                    <input class="form-control" type="number" id="seatsCount" onblur="validateSeatsCount()"/>
+                    <p class="error_msg" id="seats_error"></p>
+
+                    <div class="seats-input-container">
+
+                    </div>
+
+                    <div class="button-container">
+                        <button class="btn btn-primary" id="add-bus" onclick="addBus()">Add Bus</button>
+                        <p class="error_msg" id="bus_add_error"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
   <footer id="footer-placeholder"></footer>
 </body>

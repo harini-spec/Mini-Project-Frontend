@@ -47,10 +47,13 @@
     <nav id="nav-div-placeholder"></nav>
 
     <nav id="admin-nav"></nav>
-
+   
     <div id="view-route-container">
         <div class="search-container">
             <div class="row">
+                <div class="col">
+                    <h1>Routes</h1>
+                </div>
                 <div class="col">
                     <input class="form-control" type="text" id="source" placeholder="Source" onblur="validateSource()">
                     <p class="error_msg" id="source_error"></p>
@@ -62,7 +65,7 @@
                 <div class="col">
                     <button class="btn btn-primary" id="search-btn" onclick="searchRoute()">Search</button>
                 </div>
-                <div class="col">
+                <div class="col col3">
                     <button class="btn btn-primary" id="add-route-btn" onclick="location.href='AdminAddRoute.html'">+ Add Route</button>
                 </div>
             </div>

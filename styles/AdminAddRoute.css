@@ -1,5 +1,6 @@
 .search-container{
     padding: 20px;
+    margin: 30px 100px;
 }
 
 .search-container input{
@@ -49,19 +50,24 @@ hr{
     font-size: 1.1rem;
 }
 
-@media(max-width: 500px){
+@media(max-width: 700px){
     .route-card{
         font-size: 1rem;
         margin: 10px 0px !important;
     }
 
     .search-container{
+        margin: auto;
         display: flex !important;
         flex-direction: column !important;
     }
 
     .search-container *{
         flex: 100% !important;
+    }
+
+    .add-route-container{
+        width: 100% !important;
     }
 }
 
@@ -75,6 +81,7 @@ hr{
 }
 
 .add-route-header{
+    margin: 30px 0px;
     text-align: center;
 }
 

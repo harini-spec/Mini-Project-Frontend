@@ -13,6 +13,7 @@ Expectations:
     My booked order - sorted order
     User already logged - don't show register or log in, only logout
     Responsive pages
+    Check page title, console logs 
 
 
 Notes: 
@@ -41,3 +42,5 @@ Notes:
                 input - source and dest - change to route id 
             Add Route: 
                 While adding route for point to point, don't ask for stops - deal with it 
+            Add Buses:
+                Show bus schedules 

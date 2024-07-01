@@ -5,6 +5,8 @@ function setNavDetails(){
         document.getElementById("account").innerHTML = profileName;
     }
 
+    document.getElementById("admin").remove();
+
     if(localStorage.getItem("token")){
         var login_element = document.getElementById("login");
         var register_element = document.getElementById("register");
@@ -33,6 +35,7 @@ function setNavDetailsForAdmin(){
 
         document.getElementById("register").href = "AdminRegister.html";
         document.getElementById("login").href = "AdminLogin.html";
+        document.getElementById("home").remove();
     
         if(localStorage.getItem("token")){
             var login_element = document.getElementById("login");
@@ -50,9 +53,12 @@ function setNavDetailsForAdmin(){
                 book_element.remove();
         }
         else{
+            var admin_element = document.getElementById("admin");
             var logout_element = document.getElementById("logout");
             var ticket_element = document.getElementById("ticket");
             var book_element = document.getElementById("bookbuses");
+            if(admin_element)
+                admin_element.remove();
             if(logout_element)
                 logout_element.remove();
             if(ticket_element)
