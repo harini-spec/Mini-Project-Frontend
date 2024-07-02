@@ -29,7 +29,6 @@
           $('#nav-placeholder').load('NavBar.html', function() {
             setNavDetailsForAdmin(); 
             getBusData().then(data => {
-                console.log(data);
                 displayBusData(data);
                 });
           $("#footer-placeholder").load("Footer.html");

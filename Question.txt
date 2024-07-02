@@ -8,19 +8,14 @@ Expectations:
     Check authentication
     Error page - diff route
     Clean code - 15 lines of executable code per function
-    Menus 
+    Menus
     Layouts
     My booked order - sorted order
     User already logged - don't show register or log in, only logout
     Responsive pages
-    Check page title, console logs 
 
 
 Notes: 
-    Target:
-        Admin page 
-            - bus - input pages, display pgs
-
     Pages:
         Admin page:
             - Update status to ride over - Add ride over status to ticketslist
