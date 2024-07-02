@@ -22,7 +22,6 @@ const displayRouteData = (data) => {
     var route_list = "";
 
     data.forEach(element => {
-        console.log(element);
         route_list += `
         <div class="card route-card">
             <div class="card-header">
@@ -113,7 +112,6 @@ const addRoute = () => {
             destination: destination,
             routeStops: stops
         }
-        console.log(routeData);
         fetch('http://localhost:5251/api/Route/AddRouteAndStops', {
             method: 'POST',
             headers: {
@@ -166,7 +164,6 @@ const validateForm = () => {
     validateStopNumber();
     validateFromLocation();
     validationToLocation();
-    console.log(validateSource(), validateDestination(), validateStopNumber(), validateFromLocation(), validationToLocation());
     if(validateSource() && validateDestination() && validateStopNumber() && validateFromLocation() && validationToLocation()){
         return true;
     }
@@ -262,8 +259,6 @@ const validateAndSearchSource = async () => {
     if (validateSource()) {
         const source = document.getElementById('source').value;
         const filteredData = data.filter(element => element.source.toLowerCase() == source.toLowerCase());
-        console.log("filter")
-        console.log(filteredData);
         return filteredData;
     } else {
         displayRouteData(data);
@@ -288,7 +283,5 @@ const validateAndSearchDestination = (filteredData) => {
 
 const searchRoute = async () => {
     const data = await validateAndSearchSource();
-    console.log("IN")
-    console.log(data);
     validateAndSearchDestination(data);
 }

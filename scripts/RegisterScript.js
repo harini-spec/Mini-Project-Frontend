@@ -205,7 +205,6 @@ function RegisterCustomer(){
         return res.json();
      })
     .then(data => {
-        console.log(data);
         document.getElementById('registerError').innerHTML = "";
         document.getElementById('registerSuccess').innerHTML = "Your account has been registered successfully!";
         window.location.href = "Login.html";

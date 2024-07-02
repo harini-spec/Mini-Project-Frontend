@@ -36,7 +36,6 @@ const getSeatBySeatId = async(seatId) => {
             }
         }).then(res => res.json())
         .then(data => {
-            // console.log("hllo"+data);
             return data;
         })
         .catch(error => {

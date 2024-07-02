@@ -2,8 +2,6 @@ const bookTicket = (Method) => {
     var token = localStorage.getItem('token');
     var ticketId = document.querySelector('.Cost-Details').id;
 
-    console.log(ticketId);
-
     fetch('http://localhost:5251/api/Transaction/BookTicket?TicketId='+ticketId+'&PaymentMethod='+Method, {
         method: 'POST',
         headers: {

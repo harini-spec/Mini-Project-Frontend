@@ -73,7 +73,6 @@ function LoginCustomer(){
     .then(res => {
         if (!res.ok) {
             res.json().then(data => {
-                console.log(data);
                 if(data.errorMessage === "Your account is not activated")
                     throw new Error('Your account is not activated!');
                 if(res.status === 404 || res.status === 400 || res.status === 401)

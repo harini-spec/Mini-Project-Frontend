@@ -71,8 +71,159 @@ const validateSeatsCount = () => {
     }
 }
 
+const validateSeatNumber = (id) => {
+    var seat_element = document.getElementById(id);
+    if(!seat_element.value || !seat_element.value || !seat_element.value){
+        seat_element.classList.remove("success")
+        seat_element.classList.add("error")
+        return false 
+    }
+    else{
+        seat_element.classList.remove("error")
+        seat_element.classList.add("success")
+        return true 
+    }
+}
+
+const validateSeatType = (id) => {
+    var seat_element = document.getElementById(id);
+    if(!seat_element.value || !seat_element.value){
+        seat_element.classList.remove("success")
+        seat_element.classList.add("error")
+        return false 
+    }
+    else{
+        seat_element.classList.remove("error")
+        seat_element.classList.add("success")
+        return true 
+    }
+}
+
+const validatePrice = (id) => {
+    var seat_element = document.getElementById(id);
+    if(!seat_element.value || !seat_element.value){
+        seat_element.classList.remove("success")
+        seat_element.classList.add("error")
+        return false 
+    }
+    else{
+        seat_element.classList.remove("error")
+        seat_element.classList.add("success")
+        return true 
+    }
+}
+
+const validateSeats = () => {
+    var seat_numbers = document.querySelectorAll(".seat-number");
+    var seat_types = document.getElementsByClassName("seat-type");
+    var seat_prices = document.getElementsByClassName("seat-price");
+    var seat_status = true
+
+    for(var i=0;i<seat_numbers.length;i++){
+        if(!validateSeatNumber(seat_numbers[i].id))
+            seat_status = false
+    }
+
+    for(var i=0;i<seat_types.length;i++){
+        if(!validateSeatType(seat_types[i].id))
+            seat_status = false
+    }
+
+    for(var i=0;i<seat_prices.length;i++){
+        if(!validatePrice(seat_prices[i].id))
+            seat_status = false
+    }
+
+    return seat_status
+}
+
+const createBusObject = () => {
+    var seat_numbers = document.querySelectorAll(".seat-number");
+    var seat_types = document.getElementsByClassName("seat-type");
+    var seat_prices = document.getElementsByClassName("seat-price");
+    var seat_data = []
+    for(var i=0;i<seat_numbers.length;i++){
+        seat_data.push({
+            "seatNumber": seat_numbers[i].value,
+            "seatType": seat_types[i].value,
+            "seatPrice": seat_prices[i].value
+        })
+    }
+    return seat_data;
+}
+
+const addBus = () => {
+    bus_status = validateBus();
+    seats_status = validateSeatsCount();
+    seats_input_status = validateSeats();
+    if(bus_status && seats_status && seats_input_status){
+        var bus = document.getElementById("busNumber").value;
+        var seats = document.getElementById("seatsCount").value;
+        seat_data = createBusObject();
+        var data = {
+            "busNumber": bus,
+            "totalSeats": seats,
+            "seatsInBus": seat_data
+        }
+        var token = localStorage.getItem('token');
+        fetch('http://localhost:5251/api/Bus/AddBusAndSeats', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify(data)
+        }).then(res => {
+            if (!res.ok) {
+                res.json().then(data => {
+                    if(data.errorCode == 422)
+                        throw new Error("Seats count don't match with the number of seats added! Please try again!");
+                    else if(data.errorCode === 409)
+                        throw new Error(data.errorMessage);
+                    else if(res.status === 401)
+                        throw new Error("Unauthorized");
+                    else
+                        throw new Error("Network response was not ok");
+                })
+                .catch(error => {
+                    if(error.message.includes("Seats count don't match with the number of seats added! Please try again!"))
+                        document.getElementById('bus_add_error').innerHTML = error.message;
+                    if(error.message.includes("Network response was not ok"))
+                        document.getElementById('bus_add_error').innerHTML = "Sorry, an error occured! Please try again!";
+                    else if(error.message.includes("Unauthorized"))
+                        document.getElementById('bus_add_error').innerHTML = "Unauthorized";
+                    else
+                        document.getElementById('bus_add_error').innerHTML = error.message;   
+                    return false;
+                });
+            }
+            else
+                return res.json();
+         })
+        .then(data => {
+            if(!data)
+                return;
+            Swal.fire({
+                title: "Bus added successfully",
+                icon: "success",
+                confirmButtonText: "OK"
+                }).then((result) => {
+                if (result.isConfirmed) {
+                  location.href="AdminViewBus.html";
+                }
+              });
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
+}
+
 const displaySeatInputs = () => {
     var seats_input_container = document.querySelector(".seats-input-container");
+    if(seats_input_container.childElementCount > 0){
+        return;
+    }
     var seats = document.getElementById("seatsCount").value;
     var seats_input = "";
     for(var i = 1; i <= seats; i++){
@@ -82,16 +233,18 @@ const displaySeatInputs = () => {
                 <h5>Seat ${i}</h5>
             </div>
             <div class="col">
-                <input type="text" class="form-control" id="seat${i}-number" placeholder="Number">
+                <input type="text" class="form-control seat-number" id="seat${i}-number" onblur="validateSeatNumber('seat${i}-number')" placeholder="Number">
             </div>
             <div class="col">
-                <input type="text" class="form-control" id="seat${i}-type" placeholder="Type">
+                <input type="text" class="form-control seat-type" id="seat${i}-type" onblur="validateSeatType('seat${i}-type')" placeholder="Type">
             </div>
             <div class="col">
-                <input type="number" class="form-control" id="seat${i}-price" placeholder="Price">
+                <input type="number" class="form-control seat-price" id="seat${i}-price" onblur="validatePrice('seat${i}-price')" placeholder="Price">
             </div>
         </div>`
 
     }
-    seats_input_container.innerHTML = seats_input;
+    seats_div = document.createElement("div");
+    seats_div.innerHTML = seats_input;
+    seats_input_container.appendChild(seats_div);
 }

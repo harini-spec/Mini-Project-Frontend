@@ -212,7 +212,6 @@ const addTicketToDb = (passengers) => {
         scheduleId: parseInt(scheduleId),
         ticketDetails: passengers
     });
-    // console.log(ticket_body);
     fetch('http://localhost:5251/api/Ticket/AddTicket', {
         method: 'POST',
         headers: {

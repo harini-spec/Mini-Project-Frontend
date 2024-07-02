@@ -137,7 +137,6 @@ const filterTickets = async() => {
 const sortTickets = async() => {
     var tickets = await getTickets().then(data => {return data});
     var sort = document.querySelector("#sort").value;
-    console.log(tickets);
     if(sort == "booking_recent")
         tickets = tickets.sort((a, b) => b.ticketId - a.ticketId);
     else if(sort == "booking_oldest")

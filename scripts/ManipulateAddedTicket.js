@@ -19,7 +19,6 @@ const deleteAddedTicket = (ticketId) => {
                         throw new Error('Server error! Please try again later!');
                 })
                 .catch(error => {
-                    console.log(error.message);
                     Swal.fire(error.message, '', 'error');  
                     return false;
                 });
@@ -28,7 +27,6 @@ const deleteAddedTicket = (ticketId) => {
                 return res;
          })
         .then(data => {
-            console.log(data.message);
             Swal.fire({
                 title: "Ticket successfully removed!",
                 confirmButtonText: "OK",
@@ -64,7 +62,6 @@ const removeTicketItem = (ticketId, seatId) => {
                         throw new Error('Server error! Please try again later!');
                 })
                 .catch(error => {
-                    console.log(error.message);
                     Swal.fire(error.message, '', 'error');  
                     return false;
                 });
@@ -73,7 +70,6 @@ const removeTicketItem = (ticketId, seatId) => {
                 return res;
          })
         .then(data => {
-            console.log(data.message);
             Swal.fire({
                 title: "Passenger successfully removed!",
                 confirmButtonText: "OK",

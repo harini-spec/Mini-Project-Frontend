@@ -77,7 +77,6 @@ const checkIfAlreadyDisplayed = (scheduleId) => {
     if(ScheduleCard.classList.contains('seats-displayed')){
         ScheduleCard.classList.remove('seats-displayed');
         for(var i=0;i<ScheduleCard.childNodes.length;i++){
-            console.log(ScheduleCard.childNodes[i]);
             if(ScheduleCard.childNodes[i].classList.contains('button-addTicket')){
                 ScheduleCard.removeChild(ScheduleCard.childNodes[i]);
             }
@@ -130,7 +129,6 @@ const bookSeats = (scheduleId) => {
     }
     else{
         selectedSeats = Array.from(selectedSeats).map(seat => seat.id.split('-')[1]);
-        console.log(selectedSeats);
         localStorage.setItem('scheduleId', scheduleId);
         localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats));
         window.location.href = 'bookTicket.html';

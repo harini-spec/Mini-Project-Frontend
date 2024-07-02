@@ -17,8 +17,6 @@ const displayPassengerDetails = (ticket) => {
     document.querySelector(".Cost-Details").id = ticket.ticketId;
     var passenger_container = document.querySelector(".passenger-form-row");
 
-    console.log(ticket.addedTicketDetailDTOs);
-
     ticket.addedTicketDetailDTOs.forEach(detail => {
         var gender = detail.passengerGender;
         var female = true ? gender === "Female" : false;

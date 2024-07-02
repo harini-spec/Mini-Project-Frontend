@@ -115,7 +115,6 @@ const addSchedule = () => {
         "routeId": route,
         "driverId": driver
     }
-    console.log(schedule);
     
 
     fetch('http://localhost:5251/api/Schedule/AddSchedule', {

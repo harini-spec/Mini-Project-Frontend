@@ -176,7 +176,6 @@ const cancelTicket = (ticketId) => {
                 return res.json();
          })
         .then(data => {
-            console.log(data);
             Swal.fire({
                 title: "Ticket cancelled successfully! Refund will be processed soon. Amount = ₹" + data.refundAmount,
                 confirmButtonText: "OK",
