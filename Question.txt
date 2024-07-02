@@ -1,9 +1,7 @@
-Frontend for backend API:
-    Responsive
+Frontend for backend API
+Expectations:
     SCSS comments if used any 
     Proper folder structure
-
-Expectations:
     No console msgs
     Check authentication
     Error page - diff route
