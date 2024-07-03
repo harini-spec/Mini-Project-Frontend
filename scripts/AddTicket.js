@@ -1,3 +1,4 @@
+// Gets the schedule details from the scheduleId and calls the displayTicketDetails function
 const setTicketDetailsInPage = () => {
     var token = localStorage.getItem('token');
     var scheduleId = localStorage.getItem('scheduleId');
@@ -18,6 +19,8 @@ const setTicketDetailsInPage = () => {
             });
 }
 
+
+// Gets the seatIds from the localStorage and displays Schedule details
 const displayTicketDetails = async(element) => {
     document.querySelector('.Schedule-Details').id = element.scheduleId;
     document.getElementById('busNumber').innerHTML += element.busNumber;
@@ -30,6 +33,8 @@ const displayTicketDetails = async(element) => {
     getPassengerDetails(seats);
 }
 
+
+// Displays the seats form
 const getPassengerDetails = (selectedSeats) => {
     var form_data = "";
     selectedSeats.forEach(seat => {
@@ -64,80 +69,8 @@ const getPassengerDetails = (selectedSeats) => {
     document.querySelector('.passenger-form-container').innerHTML = form_data + '<div class="continue-button"> <p id="ticket_error_msg"></p> <button class="btn btn-primary continue" onclick="validationPassengerForm()">Continue</button> </div>';
 }
 
-const validatePhone = (seatNumber) => {
-    var seat = document.getElementById(seatNumber);
-    var phone = seat.querySelector('#phone');
-    var phone_regex = /^\d{10}$/;
 
-    if((phone.value.length < 10 || phone.value.length > 10) && phone.value.length != "") {
-        phone.classList.remove('success');
-        phone.classList.add('error');
-        phone.nextElementSibling.innerHTML = "Enter a Valid Phone Number";
-        return false;
-    } else {
-        if((phone.value.length==10 && phone_regex.test(phone.value)) || phone.value.length == 0){
-            phone.nextElementSibling.innerHTML = "";
-            phone.classList.remove('error');
-            phone.classList.add('success');
-            return true;
-        }
-        else{
-            phone.nextElementSibling.innerHTML = "Phone number should only be digits!";
-            phone.classList.add("error");
-            phone.classList.remove("success");
-            return false;
-        }
-    }
-}
-
-const validateName = (seatNumber) => {
-    var seat = document.getElementById(seatNumber);
-    var name = seat.querySelector('#name');
-    if(name.value == "" || name.value.length < 3) {
-        name.classList.remove('success');
-        name.classList.add('error');
-        name.nextElementSibling.innerHTML = "Enter a valid name";
-        return false;
-    } else {
-        name.nextElementSibling.innerHTML = "";
-        name.classList.remove('error');
-        name.classList.add('success');
-        return true;
-    }
-}
-
-const validateAge = (seatNumber) => {
-    var seat = document.getElementById(seatNumber);
-    var age = seat.querySelector('#age');
-    if(age.value == "" || age.value < 0 || age.value > 130) {
-        age.classList.remove('success');
-        age.classList.add('error');
-        age.nextElementSibling.innerHTML = "Enter a valid age";
-        return false;
-    } else {
-        age.nextElementSibling.innerHTML = "";
-        age.classList.remove('error');
-        age.classList.add('success');
-        return true;
-    }
-}
-
-const validateGender = (seatNumber) => {
-    var seat = document.getElementById(seatNumber);
-    var male = seat.querySelector('#Male');
-    var female = seat.querySelector('#Female');
-    if(male.classList.contains('selected') || female.classList.contains('selected')) {
-        seat.querySelector(".gender").querySelector(".error_msg").innerHTML = "";
-        seat.querySelector(".gender-input").classList.remove('error');
-        return true;
-    }
-    else{
-        seat.querySelector(".gender").querySelector(".error_msg").innerHTML = "Gender is required";
-        seat.querySelector(".gender-input").classList.add('error');
-        return false;
-    }
-} 
-
+// To select Female input
 const selectFemale = (seatNumber) => {
     var seat = document.getElementById(seatNumber);
     if(seat.querySelector('#Male').classList.contains('selected')) {
@@ -152,6 +85,8 @@ const selectFemale = (seatNumber) => {
     validateGender(seatNumber);
 }
 
+
+// To select Male input
 const selectMale = (seatNumber) => {
     var seat = document.getElementById(seatNumber);
     if(seat.querySelector('#Female').classList.contains('selected')) {
@@ -166,28 +101,11 @@ const selectMale = (seatNumber) => {
     validateGender(seatNumber);
 }
 
-const validationPassengerForm = () => {
-    var formStatus = true;
-    document.querySelectorAll('.passenger-form-row').forEach(row => {
-        var name_res = validateName(row.id);
-        var age_res = validateAge(row.id);
-        var gender_res = validateGender(row.id);
-        var phone_res = validatePhone(row.id);
-        if(!(name_res && age_res && gender_res && phone_res)) {
-            formStatus = false;
-        }
-    });
-    if(formStatus == true){
-        addTicket();
-    }
-}
 
+// Creates Ticket object and calls addTicketToDb function
 const addTicket = () => {
-    var selectedSeats = localStorage.getItem('selectedSeats');
-    var seats = selectedSeats.split(',').map(seat => seat.split("\"")[1]);
     var passengers = [];
     document.querySelectorAll('.passenger-form-row').forEach(row => {
-        var seatNumber = row.id;
         var name = row.querySelector('#name').value;
         var age = row.querySelector('#age').value;
         var gender = row.querySelector('.gender-input').querySelector('.selected').id;
@@ -205,6 +123,8 @@ const addTicket = () => {
     addTicketToDb(passengers);
 }
 
+
+// Adds ticket to the database
 const addTicketToDb = (passengers) => {
     var token = localStorage.getItem('token');
     var scheduleId = localStorage.getItem('scheduleId');
@@ -253,6 +173,8 @@ const addTicketToDb = (passengers) => {
     });
 }
 
+
+// Displays the cost details
 const displayCostDetails = (ticket) => {
     var continue_button = document.querySelector('.continue');
     continue_button.remove();
@@ -269,3 +191,99 @@ const displayCostDetails = (ticket) => {
     document.querySelector(".Cost-Details").id = ticket.ticketId;
 }
 
+
+// Start of Validations for passenger form
+const validatePhone = (seatNumber) => {
+    var seat = document.getElementById(seatNumber);
+    var phone = seat.querySelector('#phone');
+    var phone_regex = /^\d{10}$/;
+
+    if((phone.value.length < 10 || phone.value.length > 10) && phone.value.length != "") {
+        phone.classList.remove('success');
+        phone.classList.add('error');
+        phone.nextElementSibling.innerHTML = "Enter a Valid Phone Number";
+        return false;
+    } else {
+        if((phone.value.length==10 && phone_regex.test(phone.value)) || phone.value.length == 0){
+            phone.nextElementSibling.innerHTML = "";
+            phone.classList.remove('error');
+            phone.classList.add('success');
+            return true;
+        }
+        else{
+            phone.nextElementSibling.innerHTML = "Phone number should only be digits!";
+            phone.classList.add("error");
+            phone.classList.remove("success");
+            return false;
+        }
+    }
+}
+
+
+const validateName = (seatNumber) => {
+    var seat = document.getElementById(seatNumber);
+    var name = seat.querySelector('#name');
+    if(name.value == "" || name.value.length < 3) {
+        name.classList.remove('success');
+        name.classList.add('error');
+        name.nextElementSibling.innerHTML = "Enter a valid name";
+        return false;
+    } else {
+        name.nextElementSibling.innerHTML = "";
+        name.classList.remove('error');
+        name.classList.add('success');
+        return true;
+    }
+}
+
+
+const validateAge = (seatNumber) => {
+    var seat = document.getElementById(seatNumber);
+    var age = seat.querySelector('#age');
+    if(age.value == "" || age.value < 0 || age.value > 130) {
+        age.classList.remove('success');
+        age.classList.add('error');
+        age.nextElementSibling.innerHTML = "Enter a valid age";
+        return false;
+    } else {
+        age.nextElementSibling.innerHTML = "";
+        age.classList.remove('error');
+        age.classList.add('success');
+        return true;
+    }
+}
+
+
+const validateGender = (seatNumber) => {
+    var seat = document.getElementById(seatNumber);
+    var male = seat.querySelector('#Male');
+    var female = seat.querySelector('#Female');
+    if(male.classList.contains('selected') || female.classList.contains('selected')) {
+        seat.querySelector(".gender").querySelector(".error_msg").innerHTML = "";
+        seat.querySelector(".gender-input").classList.remove('error');
+        return true;
+    }
+    else{
+        seat.querySelector(".gender").querySelector(".error_msg").innerHTML = "Gender is required";
+        seat.querySelector(".gender-input").classList.add('error');
+        return false;
+    }
+} 
+
+
+const validationPassengerForm = () => {
+    var formStatus = true;
+    document.querySelectorAll('.passenger-form-row').forEach(row => {
+        var name_res = validateName(row.id);
+        var age_res = validateAge(row.id);
+        var gender_res = validateGender(row.id);
+        var phone_res = validatePhone(row.id);
+        if(!(name_res && age_res && gender_res && phone_res)) {
+            formStatus = false;
+        }
+    });
+    if(formStatus == true){
+        addTicket();
+    }
+}
+// End of Validations for passenger form

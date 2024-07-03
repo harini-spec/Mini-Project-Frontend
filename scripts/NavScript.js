@@ -1,3 +1,4 @@
+// Set the navigation bar details based on the user role - For common pages
 function setNavDetails(){
     var token = localStorage.getItem("token");
     if(token){
@@ -16,6 +17,8 @@ function setNavDetails(){
     }
 }
 
+
+// Set the navigation bar details based on the user role - For common pages
 function setNavDetailsForAdminAuthPages(){
     var token = localStorage.getItem("token");
     if(token){
@@ -34,6 +37,8 @@ function setNavDetailsForAdminAuthPages(){
     }
 }
 
+
+// Set the navigation bar details for the customer pages
 function setNavDetailsForCustomer(){
     var profileName = localStorage.getItem("email");
     if(profileName){
@@ -62,6 +67,7 @@ function setNavDetailsForCustomer(){
 }
 
 
+// Set the navigation bar details for the admin pages
 function setNavDetailsForAdmin(){
         var profileName = localStorage.getItem("email");
         if(profileName){
@@ -105,6 +111,7 @@ function setNavDetailsForAdmin(){
 }
 
 
+// Add event listener for logout
 document.getElementById("logout").addEventListener("click", function(){
     if(!localStorage.getItem("email") || !localStorage.getItem("token")){
         Swal.fire("You are not logged in!");

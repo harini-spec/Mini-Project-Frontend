@@ -29,7 +29,7 @@
 
           $('#nav-placeholder').load('NavBar.html', function() {
             if(window.location.href.includes("BusList"))
-                checkAuthorization();
+                checkCustomerAuthorization();
             else
                 checkAdminAuthorization();
             setNavDetailsForCustomer(); 

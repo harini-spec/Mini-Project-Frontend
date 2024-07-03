@@ -1,3 +1,4 @@
+// Get Schedule data from Schedule ID
 const getScheduleByScheduleId = (scheduleId) => {
     var token = localStorage.getItem('token');
     return fetch('http://localhost:5251/api/Schedule/GetAllSchedules', {

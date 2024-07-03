@@ -1,3 +1,4 @@
+// Start of Register Validation
 function validateName(){
     var name = document.getElementById("name");
     var name_error = document.getElementById("nameError");
@@ -184,3 +185,4 @@ function validateForm(){
     }
     return false;
 }
+// End of Register Validation

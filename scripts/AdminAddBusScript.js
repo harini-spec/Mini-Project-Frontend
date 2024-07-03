@@ -1,3 +1,4 @@
+// Get all buses from the database
 const getBusData = () => {
     var token = localStorage.getItem('token');
     return fetch('http://localhost:5251/api/Bus/GetAllBuses', {
@@ -16,6 +17,8 @@ const getBusData = () => {
         });
 }
 
+
+// Display all buses in the database
 const displayBusData = (data) => {
     var bus_list_container = document.querySelector(".bus-list-container");
     var bus_data = "";
@@ -35,108 +38,40 @@ const displayBusData = (data) => {
     bus_list_container.innerHTML = bus_data;
 }
 
-const validateBus = () => {
-    var bus = document.getElementById("busNumber");
-    let regex = /^[a-zA-Z]+$/;
 
-    if(bus.value == "" || !regex.test(bus.value.slice(0, 2)) || !regex.test(bus.value.slice(4, 6)) || bus.value.length != 10) {
-        document.getElementById("bus_error").innerHTML = "Please enter a valid bus number";
-        bus.classList.remove("success");
-        bus.classList.add("error");
-        return false;
+// Displays the seat inputs based on the number of seats entered
+const displaySeatInputs = () => {
+    var seats_input_container = document.querySelector(".seats-input-container");
+    if(seats_input_container.childElementCount > 0){
+        return;
     }
-    else{
-        document.getElementById("bus_error").innerHTML = "";
-        bus.classList.remove("error");
-        bus.classList.add("success");
-        return true;
+    var seats = document.getElementById("seatsCount").value;
+    var seats_input = "";
+    for(var i = 1; i <= seats; i++){
+        seats_input += `
+        <div class="row">
+            <div class="col col1">
+                <h5>Seat ${i}</h5>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control seat-number" id="seat${i}-number" onblur="validateSeatNumber('seat${i}-number')" placeholder="Number">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control seat-type" id="seat${i}-type" onblur="validateSeatType('seat${i}-type')" placeholder="Type">
+            </div>
+            <div class="col">
+                <input type="number" class="form-control seat-price" id="seat${i}-price" onblur="validatePrice('seat${i}-price')" placeholder="Price">
+            </div>
+        </div>`
+
     }
+    seats_div = document.createElement("div");
+    seats_div.innerHTML = seats_input;
+    seats_input_container.appendChild(seats_div);
 }
 
-const validateSeatsCount = () => {
-    var seats = document.getElementById("seatsCount");
 
-    if(!seats.value || seats.value < 0 || seats.value > 100){
-        document.getElementById("seats_error").innerHTML = "Please enter valid number of seats";
-        seats.classList.remove("success");
-        seats.classList.add("error");
-        return false;
-    }
-    else{
-        displaySeatInputs();
-        document.getElementById("seats_error").innerHTML = "";
-        seats.classList.remove("error");
-        seats.classList.add("success");
-        return true;
-    }
-}
-
-const validateSeatNumber = (id) => {
-    var seat_element = document.getElementById(id);
-    if(!seat_element.value || !seat_element.value || !seat_element.value){
-        seat_element.classList.remove("success")
-        seat_element.classList.add("error")
-        return false 
-    }
-    else{
-        seat_element.classList.remove("error")
-        seat_element.classList.add("success")
-        return true 
-    }
-}
-
-const validateSeatType = (id) => {
-    var seat_element = document.getElementById(id);
-    if(!seat_element.value || !seat_element.value){
-        seat_element.classList.remove("success")
-        seat_element.classList.add("error")
-        return false 
-    }
-    else{
-        seat_element.classList.remove("error")
-        seat_element.classList.add("success")
-        return true 
-    }
-}
-
-const validatePrice = (id) => {
-    var seat_element = document.getElementById(id);
-    if(!seat_element.value || !seat_element.value){
-        seat_element.classList.remove("success")
-        seat_element.classList.add("error")
-        return false 
-    }
-    else{
-        seat_element.classList.remove("error")
-        seat_element.classList.add("success")
-        return true 
-    }
-}
-
-const validateSeats = () => {
-    var seat_numbers = document.querySelectorAll(".seat-number");
-    var seat_types = document.getElementsByClassName("seat-type");
-    var seat_prices = document.getElementsByClassName("seat-price");
-    var seat_status = true
-
-    for(var i=0;i<seat_numbers.length;i++){
-        if(!validateSeatNumber(seat_numbers[i].id))
-            seat_status = false
-    }
-
-    for(var i=0;i<seat_types.length;i++){
-        if(!validateSeatType(seat_types[i].id))
-            seat_status = false
-    }
-
-    for(var i=0;i<seat_prices.length;i++){
-        if(!validatePrice(seat_prices[i].id))
-            seat_status = false
-    }
-
-    return seat_status
-}
-
+// Create bus object to send to the API
 const createBusObject = () => {
     var seat_numbers = document.querySelectorAll(".seat-number");
     var seat_types = document.getElementsByClassName("seat-type");
@@ -152,6 +87,8 @@ const createBusObject = () => {
     return seat_data;
 }
 
+
+// Add bus and seats to the database
 const addBus = () => {
     bus_status = validateBus();
     seats_status = validateSeatsCount();
@@ -219,32 +156,112 @@ const addBus = () => {
     }
 }
 
-const displaySeatInputs = () => {
-    var seats_input_container = document.querySelector(".seats-input-container");
-    if(seats_input_container.childElementCount > 0){
-        return;
-    }
-    var seats = document.getElementById("seatsCount").value;
-    var seats_input = "";
-    for(var i = 1; i <= seats; i++){
-        seats_input += `
-        <div class="row">
-            <div class="col col1">
-                <h5>Seat ${i}</h5>
-            </div>
-            <div class="col">
-                <input type="text" class="form-control seat-number" id="seat${i}-number" onblur="validateSeatNumber('seat${i}-number')" placeholder="Number">
-            </div>
-            <div class="col">
-                <input type="text" class="form-control seat-type" id="seat${i}-type" onblur="validateSeatType('seat${i}-type')" placeholder="Type">
-            </div>
-            <div class="col">
-                <input type="number" class="form-control seat-price" id="seat${i}-price" onblur="validatePrice('seat${i}-price')" placeholder="Price">
-            </div>
-        </div>`
 
+// Start of validation for Add Bus form
+const validateBus = () => {
+    var bus = document.getElementById("busNumber");
+    let regex = /^[a-zA-Z]+$/;
+
+    if(bus.value == "" || !regex.test(bus.value.slice(0, 2)) || !regex.test(bus.value.slice(4, 6)) || bus.value.length != 10) {
+        document.getElementById("bus_error").innerHTML = "Please enter a valid bus number";
+        bus.classList.remove("success");
+        bus.classList.add("error");
+        return false;
     }
-    seats_div = document.createElement("div");
-    seats_div.innerHTML = seats_input;
-    seats_input_container.appendChild(seats_div);
+    else{
+        document.getElementById("bus_error").innerHTML = "";
+        bus.classList.remove("error");
+        bus.classList.add("success");
+        return true;
+    }
 }
+
+
+const validateSeatsCount = () => {
+    var seats = document.getElementById("seatsCount");
+
+    if(!seats.value || seats.value < 0 || seats.value > 100){
+        document.getElementById("seats_error").innerHTML = "Please enter valid number of seats";
+        seats.classList.remove("success");
+        seats.classList.add("error");
+        return false;
+    }
+    else{
+        displaySeatInputs();
+        document.getElementById("seats_error").innerHTML = "";
+        seats.classList.remove("error");
+        seats.classList.add("success");
+        return true;
+    }
+}
+
+
+const validateSeatNumber = (id) => {
+    var seat_element = document.getElementById(id);
+    if(!seat_element.value || !seat_element.value || !seat_element.value){
+        seat_element.classList.remove("success")
+        seat_element.classList.add("error")
+        return false 
+    }
+    else{
+        seat_element.classList.remove("error")
+        seat_element.classList.add("success")
+        return true 
+    }
+}
+
+
+const validateSeatType = (id) => {
+    var seat_element = document.getElementById(id);
+    if(!seat_element.value || !seat_element.value){
+        seat_element.classList.remove("success")
+        seat_element.classList.add("error")
+        return false 
+    }
+    else{
+        seat_element.classList.remove("error")
+        seat_element.classList.add("success")
+        return true 
+    }
+}
+
+
+const validatePrice = (id) => {
+    var seat_element = document.getElementById(id);
+    if(!seat_element.value || !seat_element.value){
+        seat_element.classList.remove("success")
+        seat_element.classList.add("error")
+        return false 
+    }
+    else{
+        seat_element.classList.remove("error")
+        seat_element.classList.add("success")
+        return true 
+    }
+}
+
+
+const validateSeats = () => {
+    var seat_numbers = document.querySelectorAll(".seat-number");
+    var seat_types = document.getElementsByClassName("seat-type");
+    var seat_prices = document.getElementsByClassName("seat-price");
+    var seat_status = true
+
+    for(var i=0;i<seat_numbers.length;i++){
+        if(!validateSeatNumber(seat_numbers[i].id))
+            seat_status = false
+    }
+
+    for(var i=0;i<seat_types.length;i++){
+        if(!validateSeatType(seat_types[i].id))
+            seat_status = false
+    }
+
+    for(var i=0;i<seat_prices.length;i++){
+        if(!validatePrice(seat_prices[i].id))
+            seat_status = false
+    }
+
+    return seat_status
+}
+// End of validation for Add Bus form

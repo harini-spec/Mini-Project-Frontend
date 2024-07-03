@@ -1,3 +1,4 @@
+// Display Ticket Details for Cancellation
 const displayTicketDetails = async (ticket) => {
     var seats = [];
     if(ticket.status != "Booked")
@@ -24,6 +25,7 @@ const displayTicketDetails = async (ticket) => {
 }
 
 
+// Display Passenger Details
 const displayPassengerDetails = async (ticket) => {
     var passengerDetails = "";
     document.querySelector(".Cost-Details").id = ticket.ticketId;
@@ -91,6 +93,8 @@ const displayPassengerDetails = async (ticket) => {
     return;
 };
 
+
+// Calculate Refund amount for a ticket
 const calculateRefund = (ticket) => {
     var refundAmount = 0;
     ticket.addedTicketDetailDTOs.forEach(detail => {
@@ -100,6 +104,8 @@ const calculateRefund = (ticket) => {
     return refundAmount;
 }
 
+
+// Cancel a seat
 const cancelTicketItem = (ticketId, seatId) => {
     var token = localStorage.getItem('token');
     var seats = [];
@@ -148,6 +154,8 @@ const cancelTicketItem = (ticketId, seatId) => {
         });
 }
 
+
+// Cancel a ticket
 const cancelTicket = (ticketId) => {
     var token = localStorage.getItem('token');
 

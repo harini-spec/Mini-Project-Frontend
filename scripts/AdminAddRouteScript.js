@@ -1,3 +1,4 @@
+// Get all routes from the database
 const getRouteData = () => {
     var token = localStorage.getItem('token');
     return fetch('http://localhost:5251/api/Route/GetAllRoutes', {
@@ -16,6 +17,8 @@ const getRouteData = () => {
         });
 }
 
+
+// Display All Route Data
 const displayRouteData = (data) => {
 
     var route_container = document.getElementById("route-list");
@@ -72,9 +75,10 @@ const displayRouteData = (data) => {
     route_list +='</div>';});
 
     route_container.innerHTML = route_list;
-
 }
 
+
+// Add Stops Form Container
 const addStopFormContainer = () => {
     var stops_form_container = document.createElement("div");
     stops_form_container.innerHTML = `<div class="row stop-single-container">
@@ -91,6 +95,8 @@ const addStopFormContainer = () => {
     document.querySelector('.stop-container').appendChild(stops_form_container);
 }
 
+
+// Add Route and Stops to the database
 const addRoute = () => {
     if(validateForm()){
         var token = localStorage.getItem('token');
@@ -158,6 +164,15 @@ const addRoute = () => {
     }
 }
 
+
+// Search Route
+const searchRoute = async () => {
+    const data = await validateAndSearchSource();
+    validateAndSearchDestination(data);
+}
+
+
+// Start of validation for Add Route form
 const validateForm = () => {
     validateSource();
     validateDestination();
@@ -280,8 +295,4 @@ const validateAndSearchDestination = (filteredData) => {
         }
     });
 }
-
-const searchRoute = async () => {
-    const data = await validateAndSearchSource();
-    validateAndSearchDestination(data);
-}
+// End of validation for Add Route form

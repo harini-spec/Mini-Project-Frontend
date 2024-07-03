@@ -1,3 +1,4 @@
+// Get all tickets of a customer from the database
 const getTickets = () => {
     var token = localStorage.getItem("token");
     return fetch('http://localhost:5251/api/Ticket/GetAllTicketsOfCustomer', {
@@ -16,6 +17,8 @@ const getTickets = () => {
     });
 }
 
+
+// Display all tickets of a customer
 const displayTickets = async (tickets) => {
 
     var ticket_container = document.querySelector(".ticket-container");
@@ -87,6 +90,8 @@ const displayTickets = async (tickets) => {
     displayStatusAndButton();
 }
 
+
+// Display status and buttons accordingly for each ticket
 const displayStatusAndButton = () => {
     var ticket_cards = document.querySelectorAll(".ticket-card");
     ticket_cards.forEach(card => {
@@ -108,16 +113,22 @@ const displayStatusAndButton = () => {
     });
 }
 
+
+// Redirect to BookAddedTicket.html page
 const displayBookTicketPage = (ticketId) => {
     localStorage.setItem("ticketId", ticketId);
     window.location.href = "BookAddedTicket.html";
 }
 
+
+// Redirect to CancelTicket.html page
 const displayCancelTicketPage = (ticketId) => {
     localStorage.setItem("ticketId", ticketId);
     window.location.href = "CancelTicket.html";
 }
 
+
+// Filter tickets based on status
 const filterTickets = async() => {
     var tickets = await getTickets().then(data => {return data});
     var filter = document.querySelector("#filter").value;
@@ -134,6 +145,8 @@ const filterTickets = async() => {
     displayTickets(tickets);
 }
 
+
+// Sort tickets based on booking date or date of departure
 const sortTickets = async() => {
     var tickets = await getTickets().then(data => {return data});
     var sort = document.querySelector("#sort").value;
@@ -157,6 +170,6 @@ const sortTickets = async() => {
             return sort === "dod_asc" ? dateA - dateB : dateB - dateA;
         });
     }
-
+    
     displayTickets(tickets);
 }

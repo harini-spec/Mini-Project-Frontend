@@ -1,3 +1,4 @@
+// Get Ticket from TicketId
 const getTicketFromTicketId = (ticketId) => {
     const token = localStorage.getItem('token');
 

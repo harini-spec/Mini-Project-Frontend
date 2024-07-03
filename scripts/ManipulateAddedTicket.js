@@ -1,3 +1,4 @@
+// Delete unbooked ticket
 const deleteAddedTicket = (ticketId) => {
     var token = localStorage.getItem('token');
 
@@ -40,8 +41,9 @@ const deleteAddedTicket = (ticketId) => {
         });
 }
 
+
+// Delete unbooked seat
 const removeTicketItem = (ticketId, seatId) => {
-    
     var token = localStorage.getItem('token');
 
     return fetch('http://localhost:5251/api/Ticket/RemoveTicketItem?TicketId='+ticketId+'&SeatId='+seatId, {

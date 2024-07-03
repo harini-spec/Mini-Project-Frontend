@@ -1,3 +1,4 @@
+// Get Seat data from Seat IDs in localstorage
 const getSeatsFromSeatIds = () => {
     var token = localStorage.getItem('token');
     var selectedSeats = localStorage.getItem('selectedSeats');
@@ -25,6 +26,8 @@ const getSeatsFromSeatIds = () => {
         });
 }
 
+
+// Get Seat data from Seat ID
 const getSeatBySeatId = async(seatId) => {
     var token = localStorage.getItem('token');
 

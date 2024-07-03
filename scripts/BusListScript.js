@@ -1,3 +1,4 @@
+// Get all schedule data from database
 const getData = () => {
     var token = localStorage.getItem('token');
     return fetch('http://localhost:5251/api/Schedule/GetAllSchedules', {
@@ -16,6 +17,8 @@ const getData = () => {
         });
 }
 
+
+// Display all schedules on page load
 const loadBuses = (data, pgno) => {
     document.querySelector('.sort').innerHTML = '<button type="button" class="btn sortAsc" onclick="sortAsc()">Asc Departure</button>' +
     '<button type="button" class="btn sortDesc" onclick="sortDesc()">Desc Departure</button>';
@@ -72,6 +75,8 @@ const loadBuses = (data, pgno) => {
     buslist_row.innerHTML = buslist_html;
 }
 
+
+// Check if seats are already displayed
 const checkIfAlreadyDisplayed = (scheduleId) => {
     var ScheduleCard = document.getElementById(scheduleId);
     if(ScheduleCard.classList.contains('seats-displayed')){
@@ -87,8 +92,10 @@ const checkIfAlreadyDisplayed = (scheduleId) => {
         return true;
     }
     return false;
-} 
+}
 
+
+// Display seats of a bus
 const displaySeats = (BusNumber, scheduleId) => {
     if(!checkIfAlreadyDisplayed(scheduleId)){
         getSeatsOfBus(BusNumber).then(data => {
@@ -121,6 +128,8 @@ const displaySeats = (BusNumber, scheduleId) => {
     }
 }
 
+
+// Book seats
 const bookSeats = (scheduleId) => {
     var selectedSeats = document.getElementById(scheduleId).querySelectorAll('.selected');
     if(selectedSeats.length == 0){
@@ -135,6 +144,8 @@ const bookSeats = (scheduleId) => {
     }
 }
 
+
+// Select a seat
 const selectSeat = (scheduleId, seatId) => {
     var selectedSeat = document.getElementById(scheduleId);
     selectedSeat = selectedSeat.querySelector('#seat-' + seatId);
@@ -151,6 +162,7 @@ const selectSeat = (scheduleId, seatId) => {
 }
 
 
+// Show selected seats
 const showSeatStatus = (scheduleId) => {
     var token = localStorage.getItem('token');
     fetch('http://localhost:5251/api/Ticket/GetAvailableSeats?ScheduleID=' + scheduleId , {
@@ -187,6 +199,8 @@ const showSeatStatus = (scheduleId) => {
         });
 }
 
+
+// Get seats of a bus
 const getSeatsOfBus = (BusNumber) => {
     var token = localStorage.getItem('token');
     return fetch('http://localhost:5251/GetSeatsOfBus?BusNumber=' + BusNumber , {
@@ -204,6 +218,8 @@ const getSeatsOfBus = (BusNumber) => {
             });
 }
 
+
+// Load pagination
 function loadPagination(data){
     var divPagination = document.querySelector('.pagination');
     var paginationData = '<li class="page-item"><p class="page-link"><button class="btn" id="prevBtn">Previous</button></p></li>';
@@ -234,6 +250,8 @@ function loadPagination(data){
 
 }
 
+
+// Next button functionality for pagination
 function next(data){
     const ItemsPerPage = 5;
     var totalPages = Math.ceil(data.length / ItemsPerPage);
@@ -246,6 +264,8 @@ function next(data){
     DisplaySchedulesForPg(data, parseInt(Currentpgno) + 1);
 }
 
+
+// Previous button functionality for pagination
 function prev(data){
     var Currentpgno = document.querySelector(".buslist-row").id;
 
@@ -257,10 +277,14 @@ function prev(data){
     DisplaySchedulesForPg(data, parseInt(Currentpgno) - 1);
 }
 
+
+// Display schedules for a given page number
 function DisplaySchedulesForPg(data, pgno){
     loadBuses(data, pgno);
 }
 
+
+// Sort schedules in ascending order
 function sortAsc(){
     getData().then(data=>{
         data.sort((a, b) => (a.dateTimeOfDeparture > b.dateTimeOfDeparture) ? 1 : -1); // sort by date
@@ -269,6 +293,8 @@ function sortAsc(){
     });
 }
 
+
+// Sort schedules in descending order
 function sortDesc(){
     getData().then(data=>{
         data.sort((a, b) => (a.dateTimeOfDeparture < b.dateTimeOfDeparture) ? 1 : -1); // sort by date
@@ -277,6 +303,8 @@ function sortDesc(){
     });
 }
 
+
+// Get all schedules on a given date, source and destination
 const getSchedulesOnAGivenDate = (source, destination, date) => {
     var token = localStorage.getItem('token');
     return fetch('http://localhost:5251/api/Schedule/BusesScheduledOnGivenDateAndRoute', {
@@ -299,6 +327,8 @@ const getSchedulesOnAGivenDate = (source, destination, date) => {
             });
 }
 
+
+// Find schedules
 const findSchedules = () => {
     var source = document.getElementById('source').value;
     var destination = document.getElementById('destination').value;
@@ -320,6 +350,8 @@ const findSchedules = () => {
     }
 }
 
+
+// Check if the schedule form is valid
 function checkScheduleFormValidity(){
     if(validateSource() && validateDestination() && validateDate()){
         return true;
@@ -329,6 +361,8 @@ function checkScheduleFormValidity(){
     }
 }
 
+
+// Start of Schedule Form Validation
 const validateSource = () => {
     var source = document.getElementById('source').value;
     if(source == ""){
@@ -375,3 +409,4 @@ const validateDate = () => {
         return true;
     }
 }
+// End of Schedule Form Validation

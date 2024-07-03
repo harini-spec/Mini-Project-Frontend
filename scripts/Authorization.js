@@ -1,4 +1,4 @@
-function checkAuthorization() {
+function checkCustomerAuthorization() {
     var token = localStorage.getItem('token');
     if (token == null) {
         Swal.fire({

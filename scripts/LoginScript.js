@@ -1,3 +1,4 @@
+// Start of Login Validation
 function validateEmail(){
     var email = document.getElementById("email");
     var email_error = document.getElementById("emailError");
@@ -51,6 +52,4 @@ function validateLogin(){
         return false;
     }
 }
-
-// himu@gmail.com
-// himuPASS1@
+// End of Login Validation

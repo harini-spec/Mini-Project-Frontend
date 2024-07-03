@@ -12,6 +12,8 @@ Expectations:
     User already logged - don't show register or log in, only logout
     Responsive pages
 
+// himu@gmail.com
+// himuPASS1@
 
 Notes: 
     Pages:

@@ -1,3 +1,84 @@
+// Convert the input date and time to IST
+function convertToIST(datetimeInput) {
+    if (datetimeInput) {
+        const localDate = new Date(datetimeInput);
+        const istOffset = 5.5 * 60 * 60 * 1000; // 5.5 hours in milliseconds
+
+        // Convert the local date to IST
+        const istDate = new Date(localDate.getTime() + istOffset);
+
+        // Adjusting to ensure it retains the local date and time correctly
+        const istDateTimeLocal = istDate.toISOString().slice(0, 16);
+        return istDateTimeLocal;
+    }
+}
+
+
+// Add Schedule to the database
+const addSchedule = () => {
+    if (!validateBus() || !validateDeparture() || !validateArrival() || !validateRoute() || !validateDriver()) {
+        return;
+    }
+    var busNumber = document.getElementById('bus-list').value;
+    var departure = document.getElementById('departure').value;
+    var arrival = document.getElementById('arrival').value;
+    var route = document.getElementById('route').value;
+    var driver = document.getElementById('driver').value;
+    var schedule = {
+        "busNumber": busNumber,
+        "dateTimeOfDeparture": convertToIST(departure),
+        "dateTimeOfArrival": convertToIST(arrival),
+        "routeId": route,
+        "driverId": driver
+    }
+
+    fetch('http://localhost:5251/api/Schedule/AddSchedule', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+        body: JSON.stringify(schedule)
+    }).then(res => {
+        if (!res.ok) {
+            res.json().then(data => {
+                if(data.errorCode === 409)
+                    throw new Error(data.errorMessage);
+                else if(res.status === 401)
+                    throw new Error("Unauthorized");
+                else
+                    throw new Error("Network response was not ok");
+            })
+            .catch(error => {
+                if(error.message.includes("Network response was not ok"))
+                    document.getElementById('schedule_add_error').innerHTML = "Sorry, an error occured! Please try again!";
+                else if(error.message.includes("Unauthorized"))
+                    document.getElementById('schedule_add_error').innerHTML = "Unauthorized";
+                else
+                    document.getElementById('schedule_add_error').innerHTML = error.message;   
+                return false;
+            });
+        }
+        else
+            return res.json();
+     })
+    .then(data => {
+        if(!data)
+            return;
+        Swal.fire({
+            title: "Schedule added successfully",
+            icon: "success",
+            confirmButtonText: "OK"
+            }).then((result) => {
+            if (result.isConfirmed) {
+              location.href="AdminViewSchedule.html";
+            }
+          });
+    });
+}
+
+
+// Start of Add Schedule form validations
 const validateBus = () => {
     var busNumber = document.getElementById('bus-list');
     var busNumberError = document.getElementById('bus_error');
@@ -84,81 +165,4 @@ const validateArrival = () => {
     arrival.classList.add('success');
     return true;
 }
-
-function convertToIST(datetimeInput) {
-    if (datetimeInput) {
-        const localDate = new Date(datetimeInput);
-        const istOffset = 5.5 * 60 * 60 * 1000; // 5.5 hours in milliseconds
-
-        // Convert the local date to IST
-        const istDate = new Date(localDate.getTime() + istOffset);
-
-        // Adjusting to ensure it retains the local date and time correctly
-        const istDateTimeLocal = istDate.toISOString().slice(0, 16);
-        return istDateTimeLocal;
-    }
-}
-
-const addSchedule = () => {
-    if (!validateBus() || !validateDeparture() || !validateArrival() || !validateRoute() || !validateDriver()) {
-        return;
-    }
-    var busNumber = document.getElementById('bus-list').value;
-    var departure = document.getElementById('departure').value;
-    var arrival = document.getElementById('arrival').value;
-    var route = document.getElementById('route').value;
-    var driver = document.getElementById('driver').value;
-    var schedule = {
-        "busNumber": busNumber,
-        "dateTimeOfDeparture": convertToIST(departure),
-        "dateTimeOfArrival": convertToIST(arrival),
-        "routeId": route,
-        "driverId": driver
-    }
-    
-
-    fetch('http://localhost:5251/api/Schedule/AddSchedule', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('token')
-        },
-        body: JSON.stringify(schedule)
-    }).then(res => {
-        if (!res.ok) {
-            res.json().then(data => {
-                if(data.errorCode === 409)
-                    throw new Error(data.errorMessage);
-                else if(res.status === 401)
-                    throw new Error("Unauthorized");
-                else
-                    throw new Error("Network response was not ok");
-            })
-            .catch(error => {
-                if(error.message.includes("Network response was not ok"))
-                    document.getElementById('schedule_add_error').innerHTML = "Sorry, an error occured! Please try again!";
-                else if(error.message.includes("Unauthorized"))
-                    document.getElementById('schedule_add_error').innerHTML = "Unauthorized";
-                else
-                    document.getElementById('schedule_add_error').innerHTML = error.message;   
-                return false;
-            });
-        }
-        else
-            return res.json();
-     })
-    .then(data => {
-        if(!data)
-            return;
-        Swal.fire({
-            title: "Schedule added successfully",
-            icon: "success",
-            confirmButtonText: "OK"
-            }).then((result) => {
-            if (result.isConfirmed) {
-              location.href="AdminViewSchedule.html";
-            }
-          });
-    });
-}
-
+// End of Add Schedule form validations

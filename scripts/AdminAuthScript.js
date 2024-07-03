@@ -1,3 +1,4 @@
+// Register Admin
 function RegisterAdmin(){
     if(!validateForm()){
         return false;
@@ -50,6 +51,8 @@ function RegisterAdmin(){
     });
 }
 
+
+// Login Admin
 function LoginAdmin(){
     if(!validateLogin()){
         return false;
