@@ -19,13 +19,14 @@
 
     <!-- Start of Scripts -->
     <script src="./scripts/RegisterScript.js"></script>
+    <script src="./scripts/Authorization.js"></script>
     <script src="./scripts/CustomerRegisterScript.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
 
         $(document).ready(function(){
             $('#nav-placeholder').load('NavBar.html', function() {
-                setNavDetailsForCustomer(); 
+                setNavDetails(); 
             });
 
             $('#registerContainer').load('Register.html', function(){

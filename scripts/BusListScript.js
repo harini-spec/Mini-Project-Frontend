@@ -87,7 +87,7 @@ const checkIfAlreadyDisplayed = (scheduleId) => {
         return true;
     }
     return false;
-}
+} 
 
 const displaySeats = (BusNumber, scheduleId) => {
     if(!checkIfAlreadyDisplayed(scheduleId)){

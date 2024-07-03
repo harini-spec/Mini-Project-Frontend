@@ -30,6 +30,7 @@ Notes:
             Book Added ticket Page: 
                 - Edit passenger info
             Add schedule:
+                Show error properly - driver doesn't exist, bus doesn't exist etc 
                 Display all driver 
                 Add schedule from driver's page - can take driver id from there
                 input - source and dest - change to route id 

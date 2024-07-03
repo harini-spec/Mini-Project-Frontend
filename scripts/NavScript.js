@@ -16,6 +16,24 @@ function setNavDetails(){
     }
 }
 
+function setNavDetailsForAdminAuthPages(){
+    var token = localStorage.getItem("token");
+    if(token){
+        var decoded = parseJwt(token);
+        var role = decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+        if(role == "Admin")
+            {
+                console.log("Admin")
+                setNavDetailsForAdmin();
+            }
+        else
+            setNavDetailsForCustomer();
+    }
+    else{
+        setNavDetailsForAdmin();
+    }
+}
+
 function setNavDetailsForCustomer(){
     var profileName = localStorage.getItem("email");
     if(profileName){

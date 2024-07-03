@@ -20,11 +20,12 @@
     <!-- Start of Scripts -->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="./scripts/AdminAuthScript.js"></script>
+    <script src="./scripts/Authorization.js"></script>
     <script>
 
         $(document).ready(function(){
             $('#nav-placeholder').load('NavBar.html', function() {
-                setNavDetailsForAdmin(); 
+                setNavDetailsForAdminAuthPages(); 
             });
           $('#registerContainer').load('Register.html', function(){
                 document.getElementById("registration").addEventListener("click", function(event){
