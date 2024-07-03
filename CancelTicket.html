@@ -34,7 +34,7 @@
             checkAuthorization();
 
           $('#nav-placeholder').load('NavBar.html', function() {
-            setNavDetails();
+            setNavDetailsForCustomer();
             getTicketFromTicketId(localStorage.getItem('ticketId')).then(data => {
                 displayTicketDetails(data);
                 });

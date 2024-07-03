@@ -19,21 +19,10 @@
     <!-- Start of Scripts -->
     <script src="./scripts/LoginScript.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script>
-
-        $(document).ready(function(){
-          $('#nav-placeholder').load('NavBar.html', function() {
-            setNavDetails(); 
-          $("#footer-placeholder").load("Footer.html");
-          });
-        });
-        
-    </script>
     <!-- End of Scripts -->
 
 </head>
 <body>
-  <nav id="nav-placeholder"></nav>
 
     <div class="main-login-container">
         <div class="login-image-container">
@@ -65,7 +54,7 @@
                 </div> -->
 
                 <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4 button-container">
-                  <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-lg" onclick="return LoginCustomer()">Login</button>
+                  <button type="button" id="login-button" data-mdb-button-init data-mdb-ripple-init class="btn btn-lg">Login</button>
                 </div>
 
                 <div>
@@ -74,7 +63,7 @@
                 </div>
 
                 <div>
-                  <p class="text-center">Don't have an account? <a href="Register.html" id="register_text">Register</a></p>
+                  <p class="text-center">Don't have an account? <a href="CustomerRegister.html" id="register_text">Register</a></p>
                 </div>
 
               </form>

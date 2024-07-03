@@ -18,15 +18,21 @@
 
     <!-- Start of Scripts -->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./scripts/LoginScript.js"></script>
     <script src="./scripts/AdminAuthScript.js"></script>
     <script>
 
         $(document).ready(function(){
-          $('#nav-placeholder').load('NavBar.html', function() {
-            setNavDetailsForAdmin(); 
-          $("#footer-placeholder").load("Footer.html");
-          });
+            $('#nav-placeholder').load('NavBar.html', function() {
+                setNavDetailsForAdmin(); 
+            });
+
+            $('#login-container').load('Login.html', function(){
+                document.getElementById("login-button").addEventListener("click", function(event){
+                    return LoginAdmin()
+                });
+            });
         });
         
     </script>
@@ -35,51 +41,6 @@
 </head>
 <body>
   <nav id="nav-placeholder"></nav>
-
-    <div class="main-login-container">
-        <div class="login-image-container">
-            <img src = "./Media/Images/login-image.gif">
-        </div>
-        <div class="login-input-container">
-          <h1 style="text-align: center; padding: 20px; margin-bottom: 30px;">Sign In</h1>
-
-            <form method="post" onsubmit="return false;">
-                <div class="d-flex flex-row align-items-center mb-4 input-container">
-                  <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                  <div data-mdb-input-init class="form-outline flex-fill mb-0">
-                    <input type="email" id="email" class="form-control" placeholder="Email" onblur="validateEmail()" />
-                    <p id="emailError" class="error_msg"></p>
-                  </div>
-                </div>
-
-                <div class="d-flex flex-row align-items-center mb-4 input-container">
-                  <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                  <div data-mdb-input-init class="form-outline flex-fill mb-0">
-                    <input type="password" id="password" class="form-control" placeholder="Password" onblur="validatePassword()" />
-                    <p id="passwordError" class="error_msg"></p>
-                  </div>
-                </div>
-
-                <!-- <div class="form-check d-flex justify-content-center mb-5 forgot-pwd-container">
-                    <a href="#!" class="forgot-pwd"> Forgot Password? </a>
-                  </label>
-                </div> -->
-
-                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4 button-container">
-                  <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-lg" onclick="return LoginAdmin()">Login</button>
-                </div>
-
-                <div>
-                  <p id="loginSuccess" class="success_msg"></p>
-                  <p id="loginError" class="error_msg"></p>
-                </div>
-
-                <div>
-                  <p class="text-center">Don't have an account? <a href="AdminRegister.html" id="register_text">Register</a></p>
-                </div>
-
-              </form>
-        </div>
-    </div>
+  <nav id="login-container"></nav>
 </body>
 </html>

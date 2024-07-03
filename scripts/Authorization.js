@@ -6,7 +6,7 @@ function checkAuthorization() {
             confirmButtonText: "OK"
             }).then((result) => {
             if (result.isConfirmed) {
-              location.href="login.html";
+              location.href="CustomerLogin.html";
             }
           });
     }
@@ -16,7 +16,7 @@ function checkAuthorization() {
         var exp = decoded['exp'] * 1000;
         var expiry_date = new Date(exp);
         var current_date = new Date();
-        if((role == "Customer" || role == "Admin") && current_date <= expiry_date){
+        if((role == "Customer") && current_date <= expiry_date){
             return;
         }
         else if(current_date > expiry_date){
@@ -25,9 +25,19 @@ function checkAuthorization() {
                 confirmButtonText: "OK"
                 }).then((result) => {
                 if (result.isConfirmed) {
-                  location.href="login.html";
+                  location.href="CustomerLogin.html";
                 }
               });
+        }
+        else{
+          Swal.fire({
+            title: "Unauthorized User. You cannot access this page.",
+            confirmButtonText: "OK"
+            }).then((result) => {
+            if (result.isConfirmed) {
+              location.href="CustomerLogin.html";
+            }
+          });
         }
     }
 }

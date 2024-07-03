@@ -35,7 +35,7 @@ function RegisterAdmin(){
     .then(data => {
         document.getElementById('registerError').innerHTML = "";
         document.getElementById('registerSuccess').innerHTML = "Your account has been registered successfully!";
-        window.location.href = "LoginAdmin.html";
+        window.location.href = "AdminLogin.html";
         return true;
     })
     .catch(error => {
@@ -96,7 +96,7 @@ function LoginAdmin(){
         document.getElementById('loginError').innerHTML = "";
         document.getElementById('loginSuccess').innerHTML = "logged in successfully!";
         document.getElementById("account").innerHTML = txtEmail;
-        window.location.href = "AdminAddBus.html";
+        window.location.href = "AdminViewBus.html";
         return true;
     });
 

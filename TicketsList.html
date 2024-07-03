@@ -32,7 +32,7 @@
             checkAuthorization();
 
           $('#nav-placeholder').load('NavBar.html', function() {
-            setNavDetails();
+            setNavDetailsForCustomer();
             document.querySelector("#filter").value = "All";
             getTickets().then(data => {displayTickets(data); 
           });

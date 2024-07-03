@@ -20,22 +20,11 @@
     <!-- Start of Scripts -->
     <script src="./scripts/RegisterScript.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script>
-
-        $(document).ready(function(){
-          $('#nav-placeholder').load('NavBar.html', function() {
-            setNavDetails(); 
-          $("#footer-placeholder").load("Footer.html");
-          });
-        }); 
-        
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- End of Scripts -->
   
 </head>
 <body>
-  <nav id="nav-placeholder"></nav>
-
     <div class="main-register-container">
         <div class="register-image-container">
             <img src = "./Media/Images/register-image.png">
@@ -103,7 +92,7 @@
                 </div>
 
                 <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4 button-container" style="margin-bottom: 0px !important;">
-                  <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-lg" onclick="return RegisterCustomer()">Register</button>
+                  <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-lg" id="registration">Register</button>
                 </div>
 
                 <div>
