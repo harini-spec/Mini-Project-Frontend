@@ -114,8 +114,13 @@ input{
 }
 
 .grid{
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    display: flex;
+    flex-wrap: wrap;
+    /* grid-template-columns: 25% 25% 25% 25%; */
+}
+
+.grid *{
+    flex: 20% !important;
 }
 
 .seats-row{
@@ -159,30 +164,7 @@ input{
     margin-bottom: 30px !important;
 }
 
-@media(max-width: 800px){
-    .seats-row{
-        width: 100%;
-        font-size: 1rem;
-    }
-
-    .buslist-row{
-        margin: auto;
-    }
-
-    .sort{
-        margin-top: 0 !important;
-        text-align: left;
-    }
-
-    .header-row{
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 10px;
-    }
-}
-
 @media(max-width: 1300px){
-    
     .main-container{
         height: 500px !important;
     }
@@ -221,6 +203,29 @@ input{
     }
 }
 
+
+@media(max-width: 800px){
+    .seats-row{
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .buslist-row{
+        margin: auto;
+    }
+
+    .sort{
+        margin-top: 0 !important;
+        text-align: left;
+    }
+
+    .header-row{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+}
+
 @media(max-width: 700px){
     .input-main-container{
         width: 80% !important;
@@ -229,7 +234,6 @@ input{
 }
 
 @media(max-width: 450px){
-
     body{
         margin: auto !important;
     }

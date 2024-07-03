@@ -59,7 +59,7 @@ const displayPassengerDetails = (ticket) => {
 }
 // For Edit form: <input value=${detail.passengerName} readonly="readonly" class="name form-group" />
 
-
+ 
 // Display the cost details of the ticket
 const displayCostDetails = (ticket) => {
     var gst = ticket.total_Cost * ticket.gstPercentage / 100;

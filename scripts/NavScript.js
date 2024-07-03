@@ -77,7 +77,6 @@ function setNavDetailsForAdmin(){
 
         document.getElementById("register").href = "AdminRegister.html";
         document.getElementById("login").href = "AdminLogin.html";
-        document.getElementById("home").remove();
     
         if(localStorage.getItem("token")){
             var login_element = document.getElementById("login");
