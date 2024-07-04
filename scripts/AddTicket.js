@@ -19,7 +19,7 @@ const setTicketDetailsInPage = () => {
             });
 }
 
-
+ 
 // Gets the seatIds from the localStorage and displays Schedule details
 const displayTicketDetails = async(element) => {
     document.querySelector('.Schedule-Details').id = element.scheduleId;
